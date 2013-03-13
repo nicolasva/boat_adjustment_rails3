@@ -1,0 +1,15 @@
+routing:
+  API:
+    contexts: "/contexts"
+    users:  "/contexts/:context_id/users"
+    boat_types: "/contexts/:context_id/users/:user_id/boat_types"
+    adjustment_types: "/contexts/:context_id/users/:user_id/boat_types/:boat_type_id/adjustment_types"
+    adjustments: "/contexts/:context_id/users/:user_id/boat_types/:boat_type_id/adjustment_types/:adjustment_type_id/adjustments"
+    sellers: "/contexts/:context_id/users/:user_id/boat_types/:boat_type_id/sellers"
+    manufacturers: "/contexts/:context_id/users/:user_id/boat_types/:boat_type_id/manufacturers"
+    crews: "/contexts/:context_id/crews"
+    daytimes: "/contexts/:context_id/daytimes"
+
+routing_backbonejs:
+  API:
+    "/contexts" : "index"

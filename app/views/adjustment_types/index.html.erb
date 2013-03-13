@@ -1,0 +1,21 @@
+<h1>Listing adjustment_types</h1>
+
+<table>
+  <tr>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @adjustment_types.each do |adjustment_type| %>
+  <tr>
+    <td><%= link_to 'Show', adjustment_type %></td>
+    <td><%= link_to 'Edit', edit_adjustment_type_path(adjustment_type) %></td>
+    <td><%= link_to 'Destroy', adjustment_type, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Adjustment type', new_adjustment_type_path %>

@@ -1,0 +1,11 @@
+#= require ./underscore-min
+#= require ./backbone-min
+#= require ./haml
+#= require ./form
+#= require ./bootstrap.min
+#= require ./bootstrap-modal
+#= require ./bootstrap-dropdown
+#= require ./browserplus-min
+#= require ./tablesorter/jquery.tablesorter.min
+#= require ./select2/select2
+#= require ./yaml.min

@@ -1,0 +1,21 @@
+<h1>Listing daytimes</h1>
+
+<table>
+  <tr>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @daytimes.each do |daytime| %>
+  <tr>
+    <td><%= link_to 'Show', daytime %></td>
+    <td><%= link_to 'Edit', edit_daytime_path(daytime) %></td>
+    <td><%= link_to 'Destroy', daytime, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Daytime', new_daytime_path %>

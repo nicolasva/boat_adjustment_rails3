@@ -1,0 +1,17 @@
+<%= form_for(@daytime) do |f| %>
+  <% if @daytime.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@daytime.errors.count, "error") %> prohibited this daytime from being saved:</h2>
+
+      <ul>
+      <% @daytime.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

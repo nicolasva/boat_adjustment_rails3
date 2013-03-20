@@ -1,13 +1,11 @@
 class CrewsController < ApplicationController
+  respond_to :html, :json
   # GET /crews
   # GET /crews.json
   def index
-    @crews = Crew.all
+    @crews = User.find_by_firstname(params[:firstname_id]).crews
 
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @crews }
-    end
+    respond_with(@crews)
   end
 
   # GET /crews/1

@@ -1,0 +1,25 @@
+!!!
+%html
+  %head
+    %title Boat adjustment
+    = stylesheet_link_tag("application", :media => "all")
+    = javascript_include_tag(be_backbone? ? "rails/application" : "boat_adjustement_backbonejs/application")
+    = csrf_meta_tags
+    - if protect_against_forgery?
+      %meta{:content => u(cookies[Rails.application.config.session_options[:key]]), :name => "session-key-value"}
+  %body.container-fluid
+    %section.header
+    %section.notice
+    %section.container.container-fluid
+      = yield
+
+    %section.modal.hide.fade
+      %div.modal-header
+        %button{:type => "button", :class => "close", "data-dismiss" => "modal", "aria-hidden" => true}
+          &times;
+      %div.modal-body
+      %div.modal-footer
+        %button{:class => "btn", "data-dismiss" => "modal", "aria-hidden" => true}
+          = "close"
+
+    %section.footer

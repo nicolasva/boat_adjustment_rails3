@@ -2,14 +2,21 @@ routing:
   API:
     contexts: "/contexts"
     users:  "/contexts/:context_id/users"
-    boat_types: "/contexts/:context_id/users/:user_id/boat_types"
-    adjustment_types: "/contexts/:context_id/users/:user_id/boat_types/:boat_type_id/adjustment_types"
-    adjustments: "/contexts/:context_id/users/:user_id/boat_types/:boat_type_id/adjustment_types/:adjustment_type_id/adjustments"
+    boat_types: "/boat_types"
+    adjustment_types: "/contexts/:context_id/users/:firstname_id/adjustment_types"
+    adjustments: "/contexts/:context_id/users/:firstname_id/adjustment_types/:adjustment_type_id/adjustments"
     sellers: "/contexts/:context_id/users/:user_id/boat_types/:boat_type_id/sellers"
     manufacturers: "/contexts/:context_id/users/:user_id/boat_types/:boat_type_id/manufacturers"
-    crews: "/contexts/:context_id/crews"
+    crews: "/contexts/:context_id/users/:firstname_id/crews"
+    crews_bis: "/contexts/users/:firstname_id/crews"
     daytimes: "/contexts/:context_id/daytimes"
 
 routing_backbonejs:
   API:
-    "/contexts" : "index"
+    contexts:
+      routes:
+        "/users/:firstname_id/contexts/new" : "new"
+    adjustment_types:
+      routes: 
+        "/contexts/:context_id/users/:firstname_id/adjustment_types" : "index"
+        "/contexts/:context_id/users/:firstname_id/adjustment_types/new" : "new"

@@ -1,0 +1,21 @@
+%form#new_adjustment_types
+  %div.actions
+    %fieldset
+      %p.span12
+        %label{for: "adjustment_type_boat_type_id"} = "Boat Type"
+        %br
+        %select{name: "adjustment_type[boat_type_id]", id: "adjustment_type_boat_type_id"}
+          :each boat_type in boat_types
+            %option{value: boat_type.id}
+              = boat_type.model
+        %span.class_add_new_boat
+          = "Add new Boat Model" 
+        %div.add_new_boat
+      %p.span12
+        %label{for: "adjustment_type_name"} = "Type name"
+        %br
+        %input{name: "adjustment_type[name]", id: "adjustment_type_name", placeholder: "Type name"}
+      %p
+        %input.btn.btn-success{type: "submit", value: "Save"}
+    
+

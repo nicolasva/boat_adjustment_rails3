@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130313151945) do
+ActiveRecord::Schema.define(:version => 20130318104704) do
 
   create_table "adjustment_types", :force => true do |t|
     t.string   "name",         :null => false
@@ -51,14 +51,6 @@ ActiveRecord::Schema.define(:version => 20130313151945) do
     t.datetime "updated_at",              :null => false
   end
 
-  create_table "boat_types_manufacturers", :force => true do |t|
-    t.integer "manufacturer_id"
-    t.integer "boat_type_id"
-  end
-
-  add_index "boat_types_manufacturers", ["boat_type_id"], :name => "boat_types_boat_to_boat_types"
-  add_index "boat_types_manufacturers", ["manufacturer_id"], :name => "boat_types_manufacturer_id_to_manufacturers"
-
   create_table "boat_types_sellers", :force => true do |t|
     t.integer "seller_id"
     t.integer "boat_type_id"
@@ -86,10 +78,13 @@ ActiveRecord::Schema.define(:version => 20130313151945) do
   add_index "contexts_crews", ["crew_id"], :name => "contexts_crews_crew_id_to_crews"
 
   create_table "crews", :force => true do |t|
-    t.float    "crew_weight", :null => false
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.float    "crew_weight",                :null => false
+    t.datetime "created_at",                 :null => false
+    t.datetime "updated_at",                 :null => false
+    t.integer  "user_id",     :default => 1, :null => false
   end
+
+  add_index "crews", ["user_id"], :name => "crews_user_id_to_users"
 
   create_table "daytimes", :force => true do |t|
     t.datetime "day"

@@ -1,16 +1,20 @@
 BoatAdjustmentRails3::Application.routes.draw do
   devise_for :users, :path => "users", :path_names => { :sign_in => "login", :sign_up => "new_user", :passwords => "users/passwords" }
-  
+  scope do 
+    match "/contexts/users/:firstname_id/crews" => "crews#index", :via => "GET"
+  end
+
+  resources :boat_types do
+    resources :manufacturers
+    resources :sellers
+  end
+
   resources :contexts do
     resources :daytimes
-    resources :crews
-    resources :users do
-      resources :boat_types do
-        resources :manufacturers
-        resources :sellers
-        resources :adjustment_types do
-          resources :adjustments
-        end
+    resources :users, :as => "firstname" do
+      resources :crews
+      resources :adjustment_types do
+        resources :adjustments
       end
     end
   end

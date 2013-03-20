@@ -1,13 +1,11 @@
 class AdjustmentTypesController < ApplicationController
+  respond_to :json
   # GET /adjustment_types
   # GET /adjustment_types.json
   def index
     @adjustment_types = AdjustmentType.all
 
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @adjustment_types }
-    end
+    respond_with(@adjustment_types)
   end
 
   # GET /adjustment_types/1
@@ -15,10 +13,7 @@ class AdjustmentTypesController < ApplicationController
   def show
     @adjustment_type = AdjustmentType.find(params[:id])
 
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @adjustment_type }
-    end
+    respond_with(@adjustment_type)
   end
 
   # GET /adjustment_types/new
@@ -26,15 +21,14 @@ class AdjustmentTypesController < ApplicationController
   def new
     @adjustment_type = AdjustmentType.new
 
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @adjustment_type }
-    end
+    respond_with(@adjustment_type)
   end
 
   # GET /adjustment_types/1/edit
   def edit
     @adjustment_type = AdjustmentType.find(params[:id])
+    
+    respond_with(@adjustment_type)
   end
 
   # POST /adjustment_types
@@ -42,13 +36,20 @@ class AdjustmentTypesController < ApplicationController
   def create
     @adjustment_type = AdjustmentType.new(params[:adjustment_type])
 
-    respond_to do |format|
+    #respond_to do |format|
+    #  if @adjustment_type.save
+    #    format.html { redirect_to @adjustment_type, notice: 'Adjustment type was successfully created.' }
+    #    format.json { render json: @adjustment_type, status: :created, location: @adjustment_type }
+    #  else
+    #    format.html { render action: "new" }
+    #    format.json { render json: @adjustment_type.errors, status: :unprocessable_entity }
+    #  end
+    #end
+    respond_with do |format|
       if @adjustment_type.save
-        format.html { redirect_to @adjustment_type, notice: 'Adjustment type was successfully created.' }
-        format.json { render json: @adjustment_type, status: :created, location: @adjustment_type }
+        format.json {render json: @adjustment_type, status: :created}
       else
-        format.html { render action: "new" }
-        format.json { render json: @adjustment_type.errors, status: :unprocessable_entity }
+        format.json { render json: @adjustment_type.errors, status: :unprocessable_entity}
       end
     end
   end

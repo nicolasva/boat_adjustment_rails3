@@ -1,0 +1,25 @@
+%h1
+  = "Listing contexts"
+
+= link_to 'New context', "/#/users/#{current_user.firstname}/contexts/new"
+%table.table
+  %tr
+    %th 
+      = "City"
+    %th
+      = "Edit"
+    %th
+      = "Associate adjustment"
+    %th
+      = "Delete"
+  - @contexts.each do |context|
+    %tr
+      %td
+        = context.city
+      %td
+        = link_to "Associate ajustment", "/#/contexts/#{context.id}/users/#{current_user.firstname}/adjustment_types"
+      %td
+        = link_to "Edit", edit_context_path(context)
+      %td
+        = link_to "Destroy", context, method: :delete, data: {confirm: "Are you sure ?" }
+

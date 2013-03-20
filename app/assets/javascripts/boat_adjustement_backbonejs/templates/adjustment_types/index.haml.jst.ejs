@@ -1,0 +1,26 @@
+%h1
+  = "Listing Adjustments"
+
+%a{href: "/#/contexts/"+context_id+"/users/"+firstname_id+"/adjustment_types/new"}
+  = "Add new adjustment"
+%table.table
+  %tbody
+    %tr
+      %th
+        = "Name"
+      %th
+        = "Edit"
+      %th
+        = "Delete"
+      %th
+        = "Associate adjustment with this context"
+    %tr
+      :each adjustmentType in adjustmentTypes
+        %td
+          = adjustmentType.name
+        %td
+          %a{href: "/#/contexts/"+context_id+"/users/"+firstname_id+"/adjustment_types/adjustmentType.id/edit", title: "Edit Adjutment"}
+            = "Edit"
+        %td
+          %a{href: "/#/contexts/"+context_id+"/users/"+firstname_id+"/adjustment_types/"+adjustmentType.id+"/delete", rel: "nofollow", data-confirm: "Do you want to delete this adjustment ?"}
+            = "Destroy"

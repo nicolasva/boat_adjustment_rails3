@@ -28,7 +28,10 @@
   Routers: {}
   Libs: {}
   init: ->
-    new App.Routers.BoatTypes()
+    new App.Routers.Contexts()
+    new App.Routers.AdjustmentTypes()
+    Backbone.history.start()
+    return
 
 App.routing_yaml = YAML.load('assets/boat_adjustement_backbonejs/routing/routing.yml')
 App.routing = (hash = {}, route) ->

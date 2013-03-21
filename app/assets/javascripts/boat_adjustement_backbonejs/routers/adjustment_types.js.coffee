@@ -31,5 +31,5 @@ class App.Routers.AdjustmentTypes extends Backbone.Router
     @adjustmentTypes.context_id = context_id
     @adjustmentTypes.fetch
       success: (collection, response) ->
-        @viewAdjustmentTypesEdit = new App.Views.AdjustmentTypes.Edit({adjustmentType: self.adjustmentType, adjustmentTypes: collection, context_id: self.context_id, firstname_id: self.firstname_id})
+        @viewAdjustmentTypesEdit = new App.Views.AdjustmentTypes.Edit({adjustmentType: self.adjustmentType, adjustmentTypes: collection, context_id: context_id, firstname_id: firstname_id})
 

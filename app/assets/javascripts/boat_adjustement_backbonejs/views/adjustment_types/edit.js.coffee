@@ -17,6 +17,7 @@ class App.Views.AdjustmentTypes.Edit extends Backbone.View
     $(@el).html(Haml.render(@template(), {locals: {adjustmentTypes: @adjustmentTypes.toJSON()}}))
 
   create: (event) ->
+    result_adjustment_save = true
     self = @
     data = $(@el_form_edit_adjustment_types).toJSON()
     array_adjustements_attributes =  data.adjustment_type.adjustments_attributes
@@ -31,12 +32,12 @@ class App.Views.AdjustmentTypes.Edit extends Backbone.View
           value: val.value
           adjustment_type_id: val.adjustment_type_id
       @adjustment.save(hash_data_adjustment,
-        success: (adjustment_response, response_adjustment) ->
-          console.log true
         error: (adjustment_response, response_adjustment) ->
+          result_adjustment_save = false
           alert("Error")
           console.log adjustment_response.toJSON()
       )
     )
+    window.location.hash = "#/contexts/#{self.context_id}/users/#{self.firstname_id}/adjustment_types" if result_adjustment_save 
     return false
 

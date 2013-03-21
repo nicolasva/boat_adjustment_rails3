@@ -11,6 +11,7 @@
         %span.class_add_new_boat
           = "Add new Boat Model" 
         %div.add_new_boat
+      %input{type: "hidden", name: "adjustment_type[context_ids][]", value: context_id, id: "adjustment_type_context_ids"}
       %p.span12
         %label{for: "adjustment_type_name"} = "Type name"
         %br

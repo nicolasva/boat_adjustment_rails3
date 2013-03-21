@@ -3,9 +3,11 @@ class AdjustmentTypesController < ApplicationController
   # GET /adjustment_types
   # GET /adjustment_types.json
   def index
-    @adjustment_types = AdjustmentType.all
+    @adjustment_types = AdjustmentType.joins(:contexts).where(:contexts => {:id => params[:context_id]})
 
-    respond_with(@adjustment_types)
+    respond_with do |format|
+      format.json {render json: @adjustment_types.to_json(:include => :adjustments)}
+    end
   end
 
   # GET /adjustment_types/1

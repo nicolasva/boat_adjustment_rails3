@@ -20,3 +20,4 @@ routing_backbonejs:
       routes: 
         "/contexts/:context_id/users/:firstname_id/adjustment_types" : "index"
         "/contexts/:context_id/users/:firstname_id/adjustment_types/new" : "new"
+        "/contexts/:context_id/users/:firstname_id/adjustment_types/edit" : "edit"

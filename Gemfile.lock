@@ -259,6 +259,7 @@ DEPENDENCIES
   devise-encryptable
   devise_invitable (~> 1.0.0)
   ejs
+  execjs
   factory_girl_rails
   guard
   guard-coffeescript

@@ -1,26 +1,28 @@
-%h1
-  = "Listing Adjustments"
+%ul
+  %li
+    %a{href: "/#/contexts/"+context_id+"/users/"+firstname_id+"/adjustment_types/new"}
+      = "Add new adjustment Type"
+  %li
+    %a{href: "/#/contexts/"+context_id+"/users/"+firstname_id+"/adjustment_types/edit"}
+      = "Edit adjustment"
 
-%a{href: "/#/contexts/"+context_id+"/users/"+firstname_id+"/adjustment_types/new"}
-  = "Add new adjustment"
-%table.table
-  %tbody
-    %tr
-      %th
-        = "Name"
-      %th
-        = "Edit"
-      %th
-        = "Delete"
-      %th
-        = "Associate adjustment with this context"
-    %tr
-      :each adjustmentType in adjustmentTypes
-        %td
-          = adjustmentType.name
-        %td
-          %a{href: "/#/contexts/"+context_id+"/users/"+firstname_id+"/adjustment_types/adjustmentType.id/edit", title: "Edit Adjutment"}
-            = "Edit"
-        %td
-          %a{href: "/#/contexts/"+context_id+"/users/"+firstname_id+"/adjustment_types/"+adjustmentType.id+"/delete", rel: "nofollow", data-confirm: "Do you want to delete this adjustment ?"}
-            = "Destroy"
+%ul
+  :each adjustmentType in adjustmentTypes
+    %li
+      = adjustmentType.name
+      %table{border : 1}
+        %tr
+          %td
+            = "name"
+          %td
+            = "value"
+      %ol{id: "adjustment_type_"+adjustmentType.id+"_"+App.set_indice_by_default()}
+        :each adjustment in adjustmentType.adjustments
+          %li{id: "adjustments_"+App.get_indice(1)}
+            %table{border: 1}
+              %tr
+                %td
+                  = adjustment.name
+                %td
+                  = adjustment.value
+

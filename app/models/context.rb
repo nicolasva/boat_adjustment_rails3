@@ -9,5 +9,6 @@ class Context < ActiveRecord::Base
   validates_presence_of :average_wind
   validates_presence_of :wind_variation
   validates_presence_of :sea_state
+  has_and_belongs_to_many :adjustement_types
   has_and_belongs_to_many :crews
 end

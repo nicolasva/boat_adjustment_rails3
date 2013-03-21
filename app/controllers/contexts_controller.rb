@@ -37,7 +37,7 @@ class ContextsController < ApplicationController
 
     respond_with do |format|
       if @context.save
-        format.json { render json: @context, status: :created, location: @context }
+        format.json { render json: @context, status: :created }
       else
         format.json { render json: @context.errors, status: :unprocessable_entity }
       end

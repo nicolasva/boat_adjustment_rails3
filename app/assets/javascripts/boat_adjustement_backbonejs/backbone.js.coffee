@@ -47,6 +47,15 @@ App.routing = (hash = {}, route) ->
 
   return route
 
+i = -1
+App.set_indice_by_default = ->
+  i = -1
+  return i
+
+App.get_indice = (indice_increm) ->
+  i = i + indice_increm
+  return i
+
 $(document).ready ->
   App.init()
   return

@@ -1,13 +1,11 @@
 class AdjustmentsController < ApplicationController
+  respond_to :json
   # GET /adjustments
   # GET /adjustments.json
   def index
     @adjustments = Adjustment.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @adjustments }
-    end
+    
+    respond_with(@adjustments)
   end
 
   # GET /adjustments/1
@@ -15,10 +13,7 @@ class AdjustmentsController < ApplicationController
   def show
     @adjustment = Adjustment.find(params[:id])
 
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @adjustment }
-    end
+    respond_with(@adjustment)
   end
 
   # GET /adjustments/new
@@ -26,15 +21,13 @@ class AdjustmentsController < ApplicationController
   def new
     @adjustment = Adjustment.new
 
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @adjustment }
-    end
+    respond_with(@adjustment)
   end
 
   # GET /adjustments/1/edit
   def edit
     @adjustment = Adjustment.find(params[:id])
+    respond_with(@adjustment)
   end
 
   # POST /adjustments
@@ -42,13 +35,11 @@ class AdjustmentsController < ApplicationController
   def create
     @adjustment = Adjustment.new(params[:adjustment])
 
-    respond_to do |format|
+    respond_with do |format|
       if @adjustment.save
-        format.html { redirect_to @adjustment, notice: 'Adjustment was successfully created.' }
-        format.json { render json: @adjustment, status: :created, location: @adjustment }
+        format.json {render json: @adjustment, status: :created }
       else
-        format.html { render action: "new" }
-        format.json { render json: @adjustment.errors, status: :unprocessable_entity }
+        format.json {render json: @adjustment.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -58,12 +49,10 @@ class AdjustmentsController < ApplicationController
   def update
     @adjustment = Adjustment.find(params[:id])
 
-    respond_to do |format|
+    respond_with do |format|
       if @adjustment.update_attributes(params[:adjustment])
-        format.html { redirect_to @adjustment, notice: 'Adjustment was successfully updated.' }
-        format.json { head :no_content }
+        format.json { render json: @adjustment }
       else
-        format.html { render action: "edit" }
         format.json { render json: @adjustment.errors, status: :unprocessable_entity }
       end
     end

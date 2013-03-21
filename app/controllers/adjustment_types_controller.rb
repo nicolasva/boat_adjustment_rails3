@@ -38,15 +38,6 @@ class AdjustmentTypesController < ApplicationController
   def create
     @adjustment_type = AdjustmentType.new(params[:adjustment_type])
 
-    #respond_to do |format|
-    #  if @adjustment_type.save
-    #    format.html { redirect_to @adjustment_type, notice: 'Adjustment type was successfully created.' }
-    #    format.json { render json: @adjustment_type, status: :created, location: @adjustment_type }
-    #  else
-    #    format.html { render action: "new" }
-    #    format.json { render json: @adjustment_type.errors, status: :unprocessable_entity }
-    #  end
-    #end
     respond_with do |format|
       if @adjustment_type.save
         format.json {render json: @adjustment_type, status: :created}

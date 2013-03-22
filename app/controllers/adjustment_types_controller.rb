@@ -69,9 +69,6 @@ class AdjustmentTypesController < ApplicationController
     @adjustment_type = AdjustmentType.find(params[:id])
     @adjustment_type.destroy
 
-    respond_to do |format|
-      format.html { redirect_to adjustment_types_url }
-      format.json { head :no_content }
-    end
+    respond_with(@adjustment_type)
   end
 end

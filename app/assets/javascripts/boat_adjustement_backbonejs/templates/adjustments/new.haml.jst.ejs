@@ -1,0 +1,12 @@
+%li
+  %input{type: 'hidden', name: "adjustment_type[adjustments_attributes]["+get_indice+"][adjustment_type_id]", value: adjustment.adjustment_type_id}
+  %input{type: 'hidden', name: "adjustment_type[adjustments_attributes]["+get_indice+"][id]", value: adjustment.id}
+  %table{border: 1}
+    %tr
+      %td
+        %input{type: "text", name: "adjustment_type[adjustments_attributes]["+get_indice+"][name]", value: adjustment.name}
+      %td
+        %input{type: "text", name: "adjustment_type[adjustments_attributes]["+get_indice+"][value]", value: adjustment.value}
+      %td
+        %span{class: "delete_adjustment", id: "delete_adjustment_"+adjustment.id}
+          = "Delete this adjustment"

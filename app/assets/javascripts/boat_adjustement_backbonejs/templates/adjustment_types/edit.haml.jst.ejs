@@ -2,7 +2,9 @@
   %ul
     :each adjustmentType in adjustmentTypes
       %li
-        = adjustmentType.name
+        = adjustmentType.name 
+        %span{class: "add_adjustment_to_adjustmenttype"}
+          = "Add new Adjustment"
         %ol{id: "adjustment_type_"+adjustmentType.id+"_"+App.set_indice_by_default()}
           :each adjustment in adjustmentType.adjustments
             %li
@@ -14,5 +16,8 @@
                     %input{type: 'text', name: "adjustment_type[adjustments_attributes]["+App.get_indice(0)+"][name]", value: adjustment.name}.
                   %td
                     %input{type: 'text', name: "adjustment_type[adjustments_attributes]["+App.get_indice(0)+"][value]", value: adjustment.value}
+                  %td
+                    %span{class: "delete_adjustment", id: "delete_adjustment_"+adjustment.id}
+                      = "Delete this adjustment"
           
   %input{type: "submit", value: "Submit"}

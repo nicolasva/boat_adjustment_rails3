@@ -64,9 +64,6 @@ class AdjustmentsController < ApplicationController
     @adjustment = Adjustment.find(params[:id])
     @adjustment.destroy
 
-    respond_to do |format|
-      format.html { redirect_to adjustments_url }
-      format.json { head :no_content }
-    end
+    respond_with(@adjustment)
   end
 end

@@ -15,14 +15,6 @@ class App.Routers.AdjustmentTypes extends Backbone.Router
       success: (collection, response) ->
         @viewAdjustmentTypesIndex = new App.Views.AdjustmentTypes.Index(adjustmentTypes: collection, context_id: context_id, firstname_id: firstname_id)
 
-  new: (context_id, firstname_id) ->
-    self = @
-    @adjustmentType.firstname_id = firstname_id
-    @adjustmentType.context_id = context_id
-    @boat_types.fetch
-      success: (collection, response) ->
-        @viewAdjustmentTypesNew = new App.Views.AdjustmentTypes.New(adjustmentType: self.adjustmentType, boat_types: collection, boat_type: self.boat_type, context_id: context_id, firstname_id: firstname_id)
-
   edit: (context_id, firstname_id) ->
     self = @
     @adjustmentType.firstname_id = firstname_id
@@ -31,5 +23,7 @@ class App.Routers.AdjustmentTypes extends Backbone.Router
     @adjustmentTypes.context_id = context_id
     @adjustmentTypes.fetch
       success: (collection, response) ->
-        @viewAdjustmentTypesEdit = new App.Views.AdjustmentTypes.Edit({adjustmentType: self.adjustmentType, adjustmentTypes: collection, context_id: context_id, firstname_id: firstname_id})
+        self.boat_types.fetch
+          success: (collection_boat_types, boat_types_response) ->
+            @viewAdjustmentTypesEdit = new App.Views.AdjustmentTypes.Edit({adjustmentType: self.adjustmentType, adjustmentTypes: collection, boat_types: collection_boat_types, boat_type: self.boat_type, context_id: context_id, firstname_id: firstname_id})
 

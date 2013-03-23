@@ -8,16 +8,23 @@ class App.Views.AdjustmentTypes.Edit extends Backbone.View
     "submit #edit_adjustment_types" : "update"
     "click .add_adjustment_to_adjustmenttype" : "create" 
     "click .delete_adjustment" : "delete"
+    "click .class_add_adjustment_type" : "add_new_adjustment_type"
+    "click .delete_adjustmenttype" : "delete_adjustmenttype"
 
   initialize: (options) ->
     @adjustmentType = options.adjustmentType
     @adjustmentTypes = options.adjustmentTypes
+    @boat_types = options.boat_types
+    @boat_type = options.boat_type
     @context_id = options.context_id
     @firstname_id = options.firstname_id
     @render()
 
   render: ->
     $(@el).html(Haml.render(@template(), {locals: {adjustmentTypes: @adjustmentTypes.toJSON()}}))
+
+  add_new_adjustment_type: (event) ->
+    @viewAddNewAdjustmentType = new App.Views.AdjustmentTypes.NewAdjustmentTypes({context_id: @context_id, firstname_id: @firstname_id, adjustmentType: @adjustmentType, boat_types: @boat_types, boat_type: @boat_type})
 
   update: (event) ->
     result_adjustment_save = true

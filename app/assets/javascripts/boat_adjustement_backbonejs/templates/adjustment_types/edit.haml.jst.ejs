@@ -1,10 +1,19 @@
+%ul
+  %li
+    %span.class_add_adjustment_type
+      = "Add new adjustment type"
 %form#edit_adjustment_types
   %ul
     :each adjustmentType in adjustmentTypes
       %li
         = adjustmentType.name 
-        %span{class: "add_adjustment_to_adjustmenttype"}
-          = "Add new Adjustment"
+        %ol
+          %li
+            %span{class: "add_adjustment_to_adjustmenttype"}
+              = "Add new Adjustment"
+          %li
+            %span{class: "delete_adjustmenttype"}
+              = "Delete Adjustment Type"
         %ol{id: "adjustment_type_"+adjustmentType.id+"_"+App.set_indice_by_default()}
           :each adjustment in adjustmentType.adjustments
             %li

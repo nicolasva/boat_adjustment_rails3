@@ -26,6 +26,9 @@ class App.Views.AdjustmentTypes.Edit extends Backbone.View
   add_new_adjustment_type: (event) ->
     @viewAddNewAdjustmentType = new App.Views.AdjustmentTypes.NewAdjustmentTypes({context_id: @context_id, firstname_id: @firstname_id, adjustmentType: @adjustmentType, boat_types: @boat_types, boat_type: @boat_type})
 
+  delete_adjustmenttype: ->
+    console.log "nicolas"
+
   update: (event) ->
     result_adjustment_save = true
     self = @

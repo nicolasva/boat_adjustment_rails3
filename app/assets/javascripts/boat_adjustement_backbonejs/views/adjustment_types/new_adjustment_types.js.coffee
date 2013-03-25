@@ -6,12 +6,14 @@ class App.Views.AdjustmentTypes.NewAdjustmentTypes extends Backbone.View
   el_new_boat: ".add_new_boat"
   template_new_boat: JST["boat_adjustement_backbonejs/templates/adjustment_types/add_new_boat_model"]
 
+  template_new_adjustment_type_append: JST["boat_adjustement_backbonejs/templates/adjustment_types/form_new_adjustment_type_append"]
   el_form_new_adjustment_types: "#new_adjustment_types"
   events: 
     "click .class_add_new_boat" : "add_new_boat_model"
     "submit #new_adjustment_types" : "create"
 
   initialize: (options) ->
+    @el_form_edit_adjustment_types = options.el_form_edit_adjustment_types
     @context_id = options.context_id
     @firstname_id = options.firstname_id
     @adjustmentType = options.adjustmentType
@@ -55,6 +57,7 @@ class App.Views.AdjustmentTypes.NewAdjustmentTypes extends Backbone.View
     self = @
     @adjustmentType.save(data_adjustment_type,
       success: (adjustment_type_response, response_adjustment_type) ->
+        $(self.el_form_edit_adjustment_types).children().first().append(Haml.render(self.template_new_adjustment_type_append(), {locals: {adjustmentType: adjustment_type_response.toJSON()}}))
         $(self.el_modal_box).modal('hide')
       error: (adjustment_type_response, response_adjustment_type) ->
         alert("Error")

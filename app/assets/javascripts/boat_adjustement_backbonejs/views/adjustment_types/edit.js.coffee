@@ -24,7 +24,7 @@ class App.Views.AdjustmentTypes.Edit extends Backbone.View
     $(@el).html(Haml.render(@template(), {locals: {adjustmentTypes: @adjustmentTypes.toJSON()}}))
 
   add_new_adjustment_type: (event) ->
-    @viewAddNewAdjustmentType = new App.Views.AdjustmentTypes.NewAdjustmentTypes({context_id: @context_id, firstname_id: @firstname_id, adjustmentType: @adjustmentType, boat_types: @boat_types, boat_type: @boat_type})
+    @viewAddNewAdjustmentType = new App.Views.AdjustmentTypes.NewAdjustmentTypes({context_id: @context_id, firstname_id: @firstname_id, adjustmentType: @adjustmentType, boat_types: @boat_types, boat_type: @boat_type, el_form_edit_adjustment_types: @el_form_edit_adjustment_types})
 
   delete_adjustment_type: (event) ->
     adjustment_type_id = parseInt($(event.target).parent().parent().parent().children().last().attr("id").split("_")[$(".delete_adjustmenttype").parent().parent().parent().children().last().attr("id").split("_").length-2])
@@ -76,11 +76,12 @@ class App.Views.AdjustmentTypes.Edit extends Backbone.View
     @adjustment.adjustment_type_id = parseInt($(event.target).parent().parent().parent().children().last().attr("id").split("_")[$(".delete_adjustmenttype").parent().parent().parent().children().last().attr("id").split("_").length-2])
     @adjustment.save(hash_data_adjustment,
       success: (adjustment_response, response_adjustment) ->
-        el = $(event.target).parent().parent().parent().children().last().children().last()
+        el = $(event.target).parent().parent().parent().children().last()
         if $(event.target).parent().parent().parent().children().last().children().length == 0
           get_indice = parseInt($(event.target).parent().parent().parent().children().last().attr("id").split("_")[$(event.target).parent().parent().parent().children().last().attr("id").split("_").length-1]) 
         else
           get_indice = parseInt($(event.target).parent().parent().parent().children().last().children().last().children().first().attr("name").split("][")[1])
+        console.log get_indice
         $(el).append(Haml.render(self.template_add_adjustment(), {locals: {adjustment: adjustment_response.toJSON(), get_indice: ++get_indice}}))
       error: (adjustment_response, response_adjustment) ->
         console.log false

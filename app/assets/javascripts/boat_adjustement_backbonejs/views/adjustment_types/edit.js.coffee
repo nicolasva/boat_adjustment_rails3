@@ -35,7 +35,8 @@ class App.Views.AdjustmentTypes.Edit extends Backbone.View
       success: (adjustmentType_response, response_adjustmentType) ->
         $(event.target).parent().parent().parent().remove()
       error: (adjustmentType_response, response_adjustmentType) ->
-        console.log false
+        console.log adjustmentType_response.toJSON()
+        alert("Error")
     )
   update: (event) ->
     result_adjustment_save = true

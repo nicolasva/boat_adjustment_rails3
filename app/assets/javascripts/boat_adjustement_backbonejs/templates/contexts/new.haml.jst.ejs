@@ -28,6 +28,9 @@
           :each crew in crews
             %option{value: crew.id} 
               = crew.crew_weight
-          
+      %p.span12
+        %label{for: "context_daytimes_attributes_"+App.get_indice(1)+"_day"} = "Day"
+        %br
+        %input{type: "text", name: "context[daytimes_attributes]["+App.get_indice(0)+"][day]", id: "context_daytimes_attributes_"+App.get_indice(0)+"_day", class: "context_daytimes_attributes_day"}
     %p
       %input.btn.btn-success{type: "submit", value: "sauver"}

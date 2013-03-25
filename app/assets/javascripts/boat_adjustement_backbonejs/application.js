@@ -5,3 +5,4 @@
 //= require ../vendors/libraries
 //= require ../boat_adjustement_backbonejs/backbone
 //= require ../common/form_validate
+//= require ../common/scan

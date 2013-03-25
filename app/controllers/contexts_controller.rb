@@ -36,7 +36,7 @@ class ContextsController < ApplicationController
     @context = Context.new(params[:context])
 
     respond_with do |format|
-      if @context.save
+      if @context.save_context_with_daytimes
         format.json { render json: @context, status: :created }
       else
         format.json { render json: @context.errors, status: :unprocessable_entity }

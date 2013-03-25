@@ -1,9 +1,4 @@
 %ul
-  %li
-    %a{href: "/#/contexts/"+context_id+"/users/"+firstname_id+"/adjustment_types/edit"}
-      = "Edit adjustment"
-
-%ul
   :each adjustmentType in adjustmentTypes
     %li
       = adjustmentType.name

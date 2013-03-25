@@ -8,7 +8,14 @@
     - if protect_against_forgery?
       %meta{:content => u(cookies[Rails.application.config.session_options[:key]]), :name => "session-key-value"}
   %body.container-fluid
-    %section.header
+    - if current_user
+      %section.header
+        %ul.span6
+          %li.span2
+            = link_to "Contexts Lists", contexts_path
+        %ul.span6
+          %li.span2
+            = link_to "Logout", destroy_user_session_path, :method => :delete
     %section.notice
     %section.container.container-fluid
       = yield

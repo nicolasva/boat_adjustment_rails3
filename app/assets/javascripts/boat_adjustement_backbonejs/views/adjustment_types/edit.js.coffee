@@ -2,13 +2,14 @@ class App.Views.AdjustmentTypes.Edit extends Backbone.View
   el: ".container"
   template: JST["boat_adjustement_backbonejs/templates/adjustment_types/edit"]
 
+  template_add_new_adjustment_types: JST["boat_adjustement_backbonejs/templates/adjustment_types/add_new_adjustment_types"]
+
   template_add_adjustment: JST["boat_adjustement_backbonejs/templates/adjustments/new"]
   el_form_edit_adjustment_types: "#edit_adjustment_types"
   events: 
     "submit #edit_adjustment_types" : "update"
     "click .add_adjustment_to_adjustmenttype" : "create" 
     "click .delete_adjustment" : "delete"
-    "click .class_add_adjustment_type" : "add_new_adjustment_type"
     "click .delete_adjustmenttype" : "delete_adjustment_type"
 
   initialize: (options) ->
@@ -21,10 +22,8 @@ class App.Views.AdjustmentTypes.Edit extends Backbone.View
     @render()
 
   render: ->
+    @ViewsCommonViewsHeadersLinkPanel = new App.Common.CommonViews.Headers.LinkPanel(template: @template_add_new_adjustment_types, context_id: @context_id, firstname_id: @firstname_id, adjustmentType: @adjustmentType, boat_types: @boat_types, boat_type: @boat_type, el_form_edit_adjustment_types: @el_form_edit_adjustment_types) unless _.isEqual($(".header").children().first().children().last().children().attr("class"), "class_add_adjustment_type")
     $(@el).html(Haml.render(@template(), {locals: {adjustmentTypes: @adjustmentTypes.toJSON()}}))
-
-  add_new_adjustment_type: (event) ->
-    @viewAddNewAdjustmentType = new App.Views.AdjustmentTypes.NewAdjustmentTypes({context_id: @context_id, firstname_id: @firstname_id, adjustmentType: @adjustmentType, boat_types: @boat_types, boat_type: @boat_type, el_form_edit_adjustment_types: @el_form_edit_adjustment_types})
 
   delete_adjustment_type: (event) ->
     adjustment_type_id = parseInt($(event.target).parent().parent().parent().children().last().attr("id").split("_")[$(".delete_adjustmenttype").parent().parent().parent().children().last().attr("id").split("_").length-2])
@@ -81,7 +80,6 @@ class App.Views.AdjustmentTypes.Edit extends Backbone.View
           get_indice = parseInt($(event.target).parent().parent().parent().children().last().attr("id").split("_")[$(event.target).parent().parent().parent().children().last().attr("id").split("_").length-1]) 
         else
           get_indice = parseInt($(event.target).parent().parent().parent().children().last().children().last().children().first().attr("name").split("][")[1])
-        console.log get_indice
         $(el).append(Haml.render(self.template_add_adjustment(), {locals: {adjustment: adjustment_response.toJSON(), get_indice: ++get_indice}}))
       error: (adjustment_response, response_adjustment) ->
         console.log false

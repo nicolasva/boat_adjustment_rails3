@@ -14,6 +14,8 @@
   Common: {} =
     CommonViews: {} =
       Notice: {}
+      Headers: {} =
+        LinkPanel: {}
   Views: {} = 
     BoatTypes: {}
     Contexts: {}

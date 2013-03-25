@@ -28,6 +28,8 @@
           :each crew in crews
             %option{value: crew.id} 
               = crew.crew_weight
+        %span{class: "add_weight"}
+          = "Add weight"
       %p.span12
         %label{for: "context_daytimes_attributes_"+App.get_indice(1)+"_day"} = "Day"
         %br

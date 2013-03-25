@@ -7,10 +7,12 @@ class App.Views.Contexts.New extends Backbone.View
 
   events: 
     "submit #new_context" : "create"
+    "click .add_weight" : "add_weight"
 
   initialize: (options) ->
     @context = options.context
     @crews = options.crews
+    @crew = options.crew
     @render()
 
   render: ->
@@ -29,3 +31,6 @@ class App.Views.Contexts.New extends Backbone.View
         alert("error")
     )
     return false
+
+  add_weight: (event) ->
+    @viewCrewsNew = new App.Views.Crews.New(crew: @crew)

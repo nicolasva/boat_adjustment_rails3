@@ -2,6 +2,10 @@ BoatAdjustmentRails3::Application.routes.draw do
   devise_for :users, :path => "users", :path_names => { :sign_in => "login", :sign_up => "new_user", :passwords => "users/passwords" }
   scope do 
     match "/contexts/users/:firstname_id/crews" => "crews#index", :via => "GET"
+    match "/contexts/users/:firstname_id/crews" => "crews#create", :via => "POST"
+    match "/contexts/users/:firstname_id/crews/:id" => "crews#show", :via => "GET"
+    match "/contexts/users/:firstname_id/crews/:id" => "crews#update", :via => "PUT"
+    match "/contexts/users/:firstname_id/crews/:id" => "crews#destroy", :via => "DELETE"
   end
 
   resources :boat_types do
@@ -12,7 +16,7 @@ BoatAdjustmentRails3::Application.routes.draw do
   resources :contexts do
     resources :daytimes
     resources :users, :as => "firstname" do
-      resources :crews
+      resources :crews, :except => [:index, :create, :edit, :new, :show, :update, :destroy]
       resources :adjustment_types do
         resources :adjustments
       end

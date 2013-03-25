@@ -5,10 +5,12 @@ class App.Routers.Contexts extends Backbone.Router
   initialize: ->
     @context = new App.Context()
     @crews = new App.Collections.Crews()
+    @crew = new App.Crew()
 
   new: (firstname_id) ->
     self = @
+    @crew.firstname_id = firstname_id
     @crews.firstname_id = firstname_id
     @crews.fetch
       success: (collection, response) ->
-        @ViewContextNew = new App.Views.Contexts.New({context: self.context, crews: collection})
+        @ViewContextNew = new App.Views.Contexts.New({context: self.context, crews: collection, crew: self.crew})

@@ -40,12 +40,10 @@ class CrewsController < ApplicationController
   def create
     @crew = Crew.new(params[:crew])
 
-    respond_to do |format|
+    respond_with do |format|
       if @crew.save
-        format.html { redirect_to @crew, notice: 'Crew was successfully created.' }
-        format.json { render json: @crew, status: :created, location: @crew }
+        format.json { render json: @crew, status: :created }
       else
-        format.html { render action: "new" }
         format.json { render json: @crew.errors, status: :unprocessable_entity }
       end
     end

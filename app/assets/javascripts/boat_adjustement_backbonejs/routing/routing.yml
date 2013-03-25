@@ -7,8 +7,7 @@ routing:
     adjustments: "/contexts/:context_id/users/:firstname_id/adjustment_types/:adjustment_type_id/adjustments"
     sellers: "/contexts/:context_id/users/:user_id/boat_types/:boat_type_id/sellers"
     manufacturers: "/contexts/:context_id/users/:user_id/boat_types/:boat_type_id/manufacturers"
-    crews: "/contexts/:context_id/users/:firstname_id/crews"
-    crews_bis: "/contexts/users/:firstname_id/crews"
+    crews: "/contexts/users/:firstname_id/crews"
     daytimes: "/contexts/:context_id/daytimes"
 
 routing_backbonejs:

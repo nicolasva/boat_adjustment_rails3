@@ -7,6 +7,7 @@ class Context < ActiveRecord::Base
   attr_accessible :wind_direction
   attr_accessible :sea_state
   attr_accessible :crew_ids
+  attr_accessible :daytime_ids
   has_many :daytimes
   validates_presence_of :city
   validates_presence_of :average_wind
@@ -20,6 +21,12 @@ class Context < ActiveRecord::Base
       daytime = self.daytimes.new(self.daytimes_attributes[0])
       daytime.save
     end
+    return self
+  end
+
+  def update_context_with_daytimes(attributes)
+    self.update_attributes(:city => attributes[:city], :average_wind => attributes[:average_wind], :wind_variation => attributes[:wind_variation], :wind_direction => attributes[:wind_direction], :sea_state => attributes[:sea_state]) 
+    self.daytimes.first.update_attributes(:day => attributes[:daytimes_attributes][0][:day])
     return self
   end
 end

@@ -56,4 +56,5 @@
   :if _.isEqual(page, "new")
     %input{type: "text", name: "context[daytimes_attributes]["+App.get_indice(0)+"][day]", id: "context_daytimes_attributes_"+App.get_indice(0)+"_day", class: "context_daytimes_attributes_day", placeholder: "Day"}
   :if _.isEqual(page, "edit")
+    %input{type: "hidden", name: "context[daytimes_attributes]["+App.get_indice(0)+"][id]", id: "context_daytimes_attributes_"+App.get_indice(0)+"_id", class: "context_daytimes_attributes_id", value: context.daytimes[0].id}
     %input{type: "text", name: "context[daytimes_attributes]["+App.get_indice(0)+"][day]", id: "context_daytimes_attributes_"+App.get_indice(0)+"_day", class: "context_daytimes_attributes_day", value: App.GetDayJqueryFormat(context.daytimes[0].day)}

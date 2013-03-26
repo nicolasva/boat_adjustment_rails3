@@ -49,13 +49,20 @@ class ContextsController < ApplicationController
   def update
     @context = Context.find(params[:id])
 
-    respond_to do |format|
-      if @context.update_attributes(params[:context])
-        format.html { redirect_to @context, notice: 'Context was successfully updated.' }
-        format.json { head :no_content }
+    #respond_to do |format|
+    #  if @context.update_attributes(params[:context])
+    #    format.html { redirect_to @context, notice: 'Context was successfully updated.' }
+    #    format.json { head :no_content }
+    #  else
+    #    format.html { render action: "edit" }
+    #    format.json { render json: @context.errors, status: :unprocessable_entity }
+    #  end
+    #end
+    respond_with do |format|
+      if @context.update_context_with_daytimes(params[:context])
+        format.json { render json: @context}
       else
-        format.html { render action: "edit" }
-        format.json { render json: @context.errors, status: :unprocessable_entity }
+        format.json { render json: @context.errors, status: :unprocessable_entity}
       end
     end
   end

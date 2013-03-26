@@ -58,6 +58,9 @@ App.get_indice = (indice_increm) ->
   i = i + indice_increm
   return i
 
+App.GetDayJqueryFormat = (day) ->
+  return day.scan(/^(.{1,})T.{1,}$/)[0][0].split("-").reverse().join("/").scan(/^(.{1,})\/.{1,}$/)[0][0].split("/").reverse().join("/")+"/"+"2013-03-13T00:00:00Z".scan(/^(.{1,})T.{1,}$/)[0][0].split("-").reverse().join("/").scan(/^.{1,}\/(.{1,})$/)[0][0]
+
 $(document).ready ->
   App.init()
   return

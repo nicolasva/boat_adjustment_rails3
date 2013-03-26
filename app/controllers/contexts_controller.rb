@@ -14,7 +14,7 @@ class ContextsController < ApplicationController
     @context = Context.find(params[:id])
 
     respond_with(@context) do |format|
-      format.json {render json: @context.to_json(:include => :crews)}
+      format.json {render json: @context.to_json(:include => [:crews, :daytimes])}
     end
   end
 

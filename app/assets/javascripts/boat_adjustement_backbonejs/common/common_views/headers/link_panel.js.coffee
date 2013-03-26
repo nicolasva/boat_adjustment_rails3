@@ -15,6 +15,7 @@ class App.Common.CommonViews.Headers.LinkPanel extends Backbone.View
     "click .class_add_adjustment_type" : "add_new_adjustment_type" 
 
   render: ->
+    $(@el).children().first().children().last().remove() if _.isEqual($(@el).children().first().children().length, 2) 
     if _.isUndefined(@boat_types)
       $(@el).children().first().append(Haml.render(@template(), {locals: {firstname_id: @firstname_id, context_id: @context_id}}))
     else

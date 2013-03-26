@@ -13,6 +13,8 @@
         %ul.span6
           %li.span2
             = link_to "Contexts Lists", contexts_path
+          %li.span2
+            = link_to "New Context", "/#/users/#{current_user.firstname}/contexts/new"
         %ul.span6
           %li.span2
             = link_to "Logout", destroy_user_session_path, :method => :delete

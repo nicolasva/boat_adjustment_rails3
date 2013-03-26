@@ -15,3 +15,13 @@ class App.Routers.Contexts extends Backbone.Router
     @crews.fetch
       success: (collection, response) ->
         @ViewContextNew = new App.Views.Contexts.New({context: self.context, crews: collection, crew: self.crew})
+
+  edit: (firstname_id, id) ->
+    self = @
+    @crews.firstname_id = firstname_id
+    @context = new App.Context(id: id)
+    @context.fetch
+      success: (model, response) ->
+        self.crews.fetch
+          success: (collection, response_crew) ->
+            @ViewContextEdit = new App.Views.Contexts.Edit({context: model, crews: collection})

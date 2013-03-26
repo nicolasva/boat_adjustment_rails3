@@ -1,38 +1,5 @@
 %form#new_context
   %div.actions
     %fieldset
-      %p.span12
-        %label{for: "context_city"} = "City"
-        %br
-        %input.necessary{type: "text", id: "context_city", name: "context[city]", placeholder: "City"}
-      %p.span12
-        %label{for: "context_average_wind"} = "Average wind"
-        %br
-        %input{type: "text", id: "context_average_wind", name: "context[average_wind]", placeholder: "Average Wind"}
-      %p.span12
-        %label{for: "context_wind_variation"} = "Wind variation"
-        %br
-        %input{type: "text", id: "context_wind_variation", name: "context[wind_variation]", placeholder: "Variation Wind"}
-      %p.span12
-        %label{for: "context_wind_direction"} = "Wind direction"
-        %br
-        %input{type: "text", id: "context_wind_direction", name: "context[wind_direction]", placeholder: "Direction Wind"}
-      %p.span12
-        %label{for: "context_sea_state"} = "Sea State"
-        %br
-        %input{type: "text", id: "context_sea_state", name: "context[sea_state]", placeholder: "Sea State"}
-      %p.span12
-        %label{for: "context_crew_ids"} = "Weight Crew"
-        %br
-        %select{name: "context[crew_ids]", id: "context_crew_ids"}
-          :each crew in crews
-            %option{value: crew.id} 
-              = crew.crew_weight
-        %span{class: "add_weight"}
-          = "Add weight"
-      %p.span12
-        %label{for: "context_daytimes_attributes_"+App.get_indice(1)+"_day"} = "Day"
-        %br
-        %input{type: "text", name: "context[daytimes_attributes]["+App.get_indice(0)+"][day]", id: "context_daytimes_attributes_"+App.get_indice(0)+"_day", class: "context_daytimes_attributes_day"}
     %p
-      %input.btn.btn-success{type: "submit", value: "sauver"}
+      %input.btn.btn-success{type: "submit", value: "Register"}

@@ -26,7 +26,7 @@ class App.Views.AdjustmentTypes.Edit extends Backbone.View
     $(@el).html(Haml.render(@template(), {locals: {adjustmentTypes: @adjustmentTypes.toJSON()}}))
 
   delete_adjustment_type: (event) ->
-    adjustment_type_id = parseInt($(event.target).parent().parent().parent().children().last().attr("id").split("_")[$(".delete_adjustmenttype").parent().parent().parent().children().last().attr("id").split("_").length-2])
+    adjustment_type_id = parseInt($(event.target).parent().parent().parent().children().last().attr("id").split("_")[$(event.target).parent().parent().parent().children().last().attr("id").split("_").length-2])
     adjustmentType = new App.AdjustmentType(id: adjustment_type_id)
     adjustmentType.context_id = @context_id
     adjustmentType.firstname_id = @firstname_id
@@ -68,11 +68,11 @@ class App.Views.AdjustmentTypes.Edit extends Backbone.View
         adjustment:
           name: "Adjustment name"
           value: "Adjustment value"
-          adjustment_type_id: parseInt($(event.target).parent().parent().parent().children().last().attr("id").split("_")[$(".delete_adjustmenttype").parent().parent().parent().children().last().attr("id").split("_").length-2])
+          adjustment_type_id: parseInt($(event.target).parent().parent().parent().children().last().attr("id").split("_")[$(event.target).parent().parent().parent().children().last().attr("id").split("_").length-2])
     @adjustment = new App.Adjustment()
     @adjustment.context_id = self.context_id
     @adjustment.firstname_id = self.firstname_id
-    @adjustment.adjustment_type_id = parseInt($(event.target).parent().parent().parent().children().last().attr("id").split("_")[$(".delete_adjustmenttype").parent().parent().parent().children().last().attr("id").split("_").length-2])
+    @adjustment.adjustment_type_id = parseInt($(event.target).parent().parent().parent().children().last().attr("id").split("_")[$(event.target).parent().parent().parent().children().last().attr("id").split("_").length-2])
     @adjustment.save(hash_data_adjustment,
       success: (adjustment_response, response_adjustment) ->
         el = $(event.target).parent().parent().parent().children().last()

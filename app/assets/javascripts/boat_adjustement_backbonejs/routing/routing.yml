@@ -15,6 +15,7 @@ routing_backbonejs:
     contexts:
       routes:
         "/users/:firstname_id/contexts/new" : "new"
+        "/users/:firstname_id/contexts/:id/edit" : "edit"
     adjustment_types:
       routes: 
         "/contexts/:context_id/users/:firstname_id/adjustment_types" : "index"

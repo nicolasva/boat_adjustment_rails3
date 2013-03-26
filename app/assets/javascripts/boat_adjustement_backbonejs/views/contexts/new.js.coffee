@@ -3,6 +3,8 @@ class App.Views.Contexts.New extends Backbone.View
   el_form_new_context: "#new_context"
   template: JST["boat_adjustement_backbonejs/templates/contexts/new"]
 
+  template_content_form: JST["boat_adjustement_backbonejs/templates/contexts/_form"]
+
   el_daytimes_day: ".context_daytimes_attributes_day"
 
   events: 
@@ -16,7 +18,8 @@ class App.Views.Contexts.New extends Backbone.View
     @render()
 
   render: ->
-    $(@el).html(Haml.render(@template(), {locals: {crews: @crews.toJSON()}}))
+    $(@el).html(Haml.render(@template()))
+    $(@el).children().first().children().first().children().first().append(Haml.render(@template_content_form(), {locals: {crews: @crews.toJSON(), page: "new"}}))
     $(@el_daytimes_day).datepicker()
 
   create: (event) ->

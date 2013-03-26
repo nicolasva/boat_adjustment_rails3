@@ -1,0 +1,59 @@
+%p.span12
+  %label{for: "context_city"} = "City"
+  %br
+  :if _.isEqual(page, "new")
+    %input.necessary{type: "text", id: "context_city", name: "context[city]", placeholder: "City"}
+  :if _.isEqual(page, "edit") 
+    %input.necessary{type: "text", id: "context_city", name: "context[city]", value: context.city}
+%p.span12
+  %label{for: "context_average_wind"} = "Average wind"
+  %br
+  :if _.isEqual(page, "new")
+    %input{type: "text", id: "context_average_wind", name: "context[average_wind]", placeholder: "Average Wind"}
+  :if _.isEqual(page, "edit") 
+    %input{type: "text", id: "context_average_wind", name: "context[average_wind]", value: context.average_wind}
+%p.span12
+  %label{for: "context_wind_variation"} = "Wind variation"
+  %br
+  :if _.isEqual(page, "new")
+    %input{type: "text", id: "context_wind_variation", name: "context[wind_variation]", placeholder: "Variation Wind"} 
+  :if _.isEqual(page, "edit")
+    %input{type: "text", id: "context_wind_variation", name: "context[wind_variation]", value: context.wind_variation} 
+%p.span12
+  %label{for: "context_wind_direction"} = "Wind direction"
+  %br
+  :if _.isEqual(page, "new")
+    %input{type: "text", id: "context_wind_direction", name: "context[wind_direction]", placeholder: "Direction Wind"}
+  :if _.isEqual(page, "edit")
+    %input{type: "text", id: "context_wind_direction", name: "context[wind_direction]", value: context.wind_variation}
+%p.span12
+  %label{for: "context_sea_state"} = "Sea State"
+  %br
+  :if _.isEqual(page, "new")
+    %input{type: "text", id: "context_sea_state", name: "context[sea_state]", placeholder: "Sea State"}
+  :if _.isEqual(page, "edit")
+    %input{type: "text", id: "context_sea_state", name: "context[sea_state]", value: context.sea_state}
+%p.span12
+  %label{for: "context_crew_ids"} = "Weight Crew"
+  %br
+  %select{name: "context[crew_ids]", id: "context_crew_ids"}
+    :each crew in crews
+      :if _.isEqual(page, "new")
+        %option{value: crew.id} 
+          = crew.crew_weight
+      :if _.isEqual(page, "edit")
+        :if _.isEqual(crew.crew_weight, context.crews[0].crew_weight)
+          %option{value: crew.id, selected: "selected"} 
+            = crew.crew_weight
+        :if !_.isEqual(crew.crew_weight, context.crews[0].crew_weight)
+          %option{value: crew.id} 
+            = crew.crew_weight
+  %span{class: "add_weight"}
+    = "Add weight"
+%p.span12
+  %label{for: "context_daytimes_attributes_"+App.get_indice(1)+"_day"} = "Day"
+  %br
+  :if _.isEqual(page, "new")
+    %input{type: "text", name: "context[daytimes_attributes]["+App.get_indice(0)+"][day]", id: "context_daytimes_attributes_"+App.get_indice(0)+"_day", class: "context_daytimes_attributes_day", placeholder: "Day"}
+  :if _.isEqual(page, "edit")
+    %input{type: "text", name: "context[daytimes_attributes]["+App.get_indice(0)+"][day]", id: "context_daytimes_attributes_"+App.get_indice(0)+"_day", class: "context_daytimes_attributes_day", value: App.GetDayJqueryFormat(context.daytimes[0].day)}

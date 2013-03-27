@@ -1,28 +1,24 @@
-%form#edit_adjustment_types
-  %ul
-    :each adjustmentType in adjustmentTypes
+:each adjustmentType in adjustmentTypes
+  %li
+    = adjustmentType.name 
+    %ol
       %li
-        = adjustmentType.name 
-        %ol
-          %li
-            %span{class: "add_adjustment_to_adjustmenttype"}
-              = "Add new Adjustment"
-          %li
-            %span{class: "delete_adjustmenttype"}
-              = "Delete Adjustment Type"
-        %ol{id: "adjustment_type_"+adjustmentType.id+"_"+App.set_indice_by_default()}
-          :each adjustment in adjustmentType.adjustments
-            %li
-              %input{type: "hidden", name: "adjustment_type[adjustments_attributes]["+App.get_indice(1)+"][adjustment_type_id]", value: adjustmentType.id}
-              %input{type: "hidden", name: "adjustment_type[adjustments_attributes]["+App.get_indice(0)+"][id]", value: adjustment.id}
-              %table{boarder: 1}
-                %tr
-                  %td
-                    %input{type: 'text', name: "adjustment_type[adjustments_attributes]["+App.get_indice(0)+"][name]", value: adjustment.name}.
-                  %td
-                    %input{type: 'text', name: "adjustment_type[adjustments_attributes]["+App.get_indice(0)+"][value]", value: adjustment.value}
-                  %td
-                    %span{class: "delete_adjustment", id: "delete_adjustment_"+adjustment.id}
-                      = "Delete this adjustment"
-          
-  %input{type: "submit", value: "Submit"}
+        %span{class: "add_adjustment_to_adjustmenttype"}
+          = "Add new Adjustment"
+      %li
+        %span{class: "delete_adjustmenttype"}
+          = "Delete Adjustment Type"
+    %ol{id: "adjustment_type_"+adjustmentType.id+"_"+App.set_indice_by_default()}
+      :each adjustment in adjustmentType.adjustments
+        %li
+          %input{type: "hidden", name: "adjustment_type[adjustments_attributes]["+App.get_indice(1)+"][adjustment_type_id]", value: adjustmentType.id}
+          %input{type: "hidden", name: "adjustment_type[adjustments_attributes]["+App.get_indice(0)+"][id]", value: adjustment.id}
+          %table{boarder: 1}
+            %tr
+              %td
+                %input{type: 'text', name: "adjustment_type[adjustments_attributes]["+App.get_indice(0)+"][name]", value: adjustment.name}.
+              %td
+                %input{type: 'text', name: "adjustment_type[adjustments_attributes]["+App.get_indice(0)+"][value]", value: adjustment.value}
+              %td
+                %span{class: "delete_adjustment", id: "delete_adjustment_"+adjustment.id}
+                  = "Delete this adjustment"

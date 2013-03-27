@@ -2,7 +2,11 @@ class App.Views.AdjustmentTypes.Edit extends Backbone.View
   el: ".container"
   template: JST["boat_adjustement_backbonejs/templates/adjustment_types/edit"]
 
+  template_suggest_adjustment: JST["boat_adjustement_backbonejs/templates/adjustment_types/suggest_adjustments"]
+
   template_add_new_adjustment_types: JST["boat_adjustement_backbonejs/templates/adjustment_types/add_new_adjustment_types"]
+
+  template_adjustment_types_form_header_edit_adjustment_types: JST["boat_adjustement_backbonejs/templates/adjustment_types/_form_header_edit_adjustment_types"]
 
   template_add_adjustment: JST["boat_adjustement_backbonejs/templates/adjustments/new"]
   el_form_edit_adjustment_types: "#edit_adjustment_types"
@@ -23,7 +27,11 @@ class App.Views.AdjustmentTypes.Edit extends Backbone.View
 
   render: ->
     @ViewsCommonViewsHeadersLinkPanel = new App.Common.CommonViews.Headers.LinkPanel(template: @template_add_new_adjustment_types, context_id: @context_id, firstname_id: @firstname_id, adjustmentType: @adjustmentType, boat_types: @boat_types, boat_type: @boat_type, el_form_edit_adjustment_types: @el_form_edit_adjustment_types) unless _.isEqual($(".header").children().first().children().last().children().attr("class"), "class_add_adjustment_type")
-    $(@el).html(Haml.render(@template(), {locals: {adjustmentTypes: @adjustmentTypes.toJSON()}}))
+    if _.isEmpty(@adjustmentTypes.toJSON())
+      $(@el).html(Haml.render(@template_suggest_adjustment()))
+    else
+      $(@el).html(Haml.render(@template_adjustment_types_form_header_edit_adjustment_types()))
+      $(@el).children().first().children().first().html(Haml.render(@template(), {locals: {adjustmentTypes: @adjustmentTypes.toJSON()}}))
 
   delete_adjustment_type: (event) ->
     adjustment_type_id = parseInt($(event.target).parent().parent().parent().children().last().attr("id").split("_")[$(event.target).parent().parent().parent().children().last().attr("id").split("_").length-2])

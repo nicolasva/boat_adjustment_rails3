@@ -71,9 +71,6 @@ class CrewsController < ApplicationController
     @crew = Crew.find(params[:id])
     @crew.destroy
 
-    respond_to do |format|
-      format.html { redirect_to crews_url }
-      format.json { head :no_content }
-    end
+    respond_with(@crew)
   end
 end

@@ -28,6 +28,7 @@ class ContextsController < ApplicationController
   # GET /contexts/1/edit
   def edit
     @context = Context.find(params[:id])
+    respond_with(@context)
   end
 
   # POST /contexts

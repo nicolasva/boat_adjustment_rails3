@@ -18,15 +18,25 @@ class Context < ActiveRecord::Base
 
   def save_context_with_daytimes
     if self.save
-      daytime = self.daytimes.new(self.daytimes_attributes[0])
-      daytime.save
+      save_daytimes(self.daytimes_attributes)
     end
     return self
   end
 
   def update_context_with_daytimes(attributes)
     self.update_attributes(:city => attributes[:city], :average_wind => attributes[:average_wind], :wind_variation => attributes[:wind_variation], :wind_direction => attributes[:wind_direction], :sea_state => attributes[:sea_state]) 
-    self.daytimes.first.update_attributes(:day => attributes[:daytimes_attributes][0][:day])
+    if self.daytimes.first.nil?
+      save_daytimes(attributes[:daytimes_attributes])
+    else
+      self.daytimes.first.update_attributes(attributes[:daytimes_attributes][0]) 
+    end
+
     return self
+  end
+
+  private
+  def save_daytimes(attributes)
+    daytime = self.daytimes.new(attributes[0])
+    daytime.save
   end
 end

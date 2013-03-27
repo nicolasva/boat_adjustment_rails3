@@ -53,8 +53,9 @@
 %p.span12
   %label{for: "context_daytimes_attributes_"+App.get_indice(1)+"_day"} = "Day"
   %br
-  :if _.isEqual(page, "new")
+  :if _.isEqual(page, "new") || _.isUndefined(context.daytimes[0])
     %input{type: "text", name: "context[daytimes_attributes]["+App.get_indice(0)+"][day]", id: "context_daytimes_attributes_"+App.get_indice(0)+"_day", class: "context_daytimes_attributes_day", placeholder: "Day"}
-  :if _.isEqual(page, "edit")
+  :if _.isEqual(page, "edit") && !_.isUndefined(context.daytimes[0])
     %input{type: "hidden", name: "context[daytimes_attributes]["+App.get_indice(0)+"][id]", id: "context_daytimes_attributes_"+App.get_indice(0)+"_id", class: "context_daytimes_attributes_id", value: context.daytimes[0].id}
     %input{type: "text", name: "context[daytimes_attributes]["+App.get_indice(0)+"][day]", id: "context_daytimes_attributes_"+App.get_indice(0)+"_day", class: "context_daytimes_attributes_day", value: App.GetDayJqueryFormat(context.daytimes[0].day)}
+      

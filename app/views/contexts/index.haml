@@ -20,5 +20,5 @@
       %td
         = link_to "Edit", "/#/users/#{current_user.firstname}/contexts/#{context.id}/edit"
       %td
-        = link_to "Destroy", context, method: :delete, data: {confirm: "Are you sure ?" }
+        = link_to "Destroy", "/#/contexts/#{context.id}", method: :delete, data: {confirm: "Are you sure ?" }
 

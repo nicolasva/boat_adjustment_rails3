@@ -9,13 +9,13 @@ routing:
     manufacturers: "/contexts/:context_id/users/:user_id/boat_types/:boat_type_id/manufacturers"
     crews: "/contexts/users/:firstname_id/crews"
     daytimes: "/contexts/:context_id/daytimes"
-
 routing_backbonejs:
   API:
     contexts:
       routes:
         "/users/:firstname_id/contexts/new" : "new"
         "/users/:firstname_id/contexts/:id/edit" : "edit"
+        "/contexts/:id" : "destroy"
     adjustment_types:
       routes: 
         "/contexts/:context_id/users/:firstname_id/adjustment_types" : "index"

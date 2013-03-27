@@ -25,3 +25,12 @@ class App.Routers.Contexts extends Backbone.Router
         self.crews.fetch
           success: (collection, response_crew) ->
             @ViewContextEdit = new App.Views.Contexts.Edit({context: model, crews: collection})
+
+  destroy: (id) ->
+    @context = new App.Context(id: id)
+    @context.destroy
+      success: (model, response) ->
+        window.location = "/contexts"
+      error: (model, response) ->
+        console.log model.toJSON()
+        alert("Error")

@@ -1,5 +1,4 @@
 class AdjustmentType < ActiveRecord::Base
-  # attr_accessible :title, :body
   attr_accessible :name, :boat_type_id, :boat_type, :context_ids, :adjustments_attributes
   validates_presence_of :name
   validates_presence_of :boat_type_id

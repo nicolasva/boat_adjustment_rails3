@@ -1,0 +1,11 @@
+%ul.span12
+  :each context_search in contexts_searchs
+    %li{class: "contexts_searchs_"+context_search.id+" span12"}
+      .span3
+        = context_search.city
+      .span3
+        = context_search.average_wind
+      .span3
+        = context_search.wind_direction
+      .span3
+        = context_search.sea_state

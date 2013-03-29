@@ -27,6 +27,7 @@
     Daytimes: {}
     Manufacturers: {}
     Sellers: {}
+    ContextsSearchs: {}
   Routers: {}
   Libs: {}
   init: ->

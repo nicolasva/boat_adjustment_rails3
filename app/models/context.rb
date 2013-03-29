@@ -34,14 +34,14 @@ class Context < ActiveRecord::Base
     return self
   end
 
-  def search_suggest_context(context_id)
+  def self.search_suggest_context(context_id)
     context = self.find(context_id)
     average_wind = context.average_wind
     wind_variation = context.wind_variation
     wind_direction = context.wind_direction
     hash_result_context_value = Hash.new
-    hash_result_context_value = average_context(average_wind, wind_variation, wind_direction)
-    self.where(:average_wind => hash_result_context_value[:average_wind_min]..hash_result_context_value[:average_wind_max], :wind_variation => hash_result_context_value[:wind_variation_min]..hash_result_context_value[:wind_variation_max], :wind_direction => hash_result_context_value[:wind_direction_min]..hash_result_context_value[:wind_direction_max])
+    hash_result_context_value = self.average_context(average_wind, wind_variation, wind_direction)
+    return self.where(:average_wind => hash_result_context_value[:average_wind_min]..hash_result_context_value[:average_wind_max], :wind_variation => hash_result_context_value[:wind_variation_min]..hash_result_context_value[:wind_variation_max], :wind_direction => hash_result_context_value[:wind_direction_min]..hash_result_context_value[:wind_direction_max]).joins(:adjustment_types => :adjustments).all
   end
 
   private
@@ -50,7 +50,7 @@ class Context < ActiveRecord::Base
     daytime.save
   end
 
-  def average_context(average_wind, wind_variation, wind_direction)
+  def self.average_context(average_wind, wind_variation, wind_direction)
     hash_average_context = Hash.new
     min_value_average = 5
     hash_average_context[:average_wind_min] = average_wind - min_value_average
@@ -63,4 +63,5 @@ class Context < ActiveRecord::Base
 
     return hash_average_context
   end
+
 end

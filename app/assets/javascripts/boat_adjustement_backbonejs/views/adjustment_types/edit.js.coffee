@@ -8,15 +8,19 @@ class App.Views.AdjustmentTypes.Edit extends Backbone.View
 
   template_adjustment_types_form_header_edit_adjustment_types: JST["boat_adjustement_backbonejs/templates/adjustment_types/_form_header_edit_adjustment_types"]
 
-  template_add_adjustment: JST["boat_adjustement_backbonejs/templates/adjustments/new"]
+  template_no_adjustment_types: JST["boat_adjustement_backbonejs/templates/adjustment_types/no_adjustment_types"]
+  
+  vailabletemplate_add_adjustment: JST["boat_adjustement_backbonejs/templates/adjustments/new"]
   el_form_edit_adjustment_types: "#edit_adjustment_types"
   events: 
     "submit #edit_adjustment_types" : "update"
     "click .add_adjustment_to_adjustmenttype" : "create" 
     "click .delete_adjustment" : "delete"
     "click .delete_adjustmenttype" : "delete_adjustment_type"
+    "click .suggest_adjustment" : "suggest_adjustment"
 
   initialize: (options) ->
+    @contexts_searchs = options.contexts_searchs
     @adjustmentType = options.adjustmentType
     @adjustmentTypes = options.adjustmentTypes
     @boat_types = options.boat_types
@@ -26,9 +30,16 @@ class App.Views.AdjustmentTypes.Edit extends Backbone.View
     @render()
 
   render: ->
+    self = @
     @ViewsCommonViewsHeadersLinkPanel = new App.Common.CommonViews.Headers.LinkPanel(template: @template_add_new_adjustment_types, context_id: @context_id, firstname_id: @firstname_id, adjustmentType: @adjustmentType, boat_types: @boat_types, boat_type: @boat_type, el_form_edit_adjustment_types: @el_form_edit_adjustment_types) unless _.isEqual($(".header").children().first().children().last().children().attr("class"), "class_add_adjustment_type")
     if _.isEmpty(@adjustmentTypes.toJSON())
-      $(@el).html(Haml.render(@template_suggest_adjustment()))
+      @contexts_searchs.fetch
+        success: (collection, response) -> 
+          unless _.isEmpty(collection.toJSON())
+            $(self.el).html(Haml.render(self.template_suggest_adjustment())) 
+          else
+            $(self.el).html(Haml.render(self.template_no_adjustment_types()))
+
     else
       $(@el).html(Haml.render(@template_adjustment_types_form_header_edit_adjustment_types()))
       $(@el).children().first().children().first().html(Haml.render(@template(), {locals: {adjustmentTypes: @adjustmentTypes.toJSON()}}))
@@ -107,3 +118,9 @@ class App.Views.AdjustmentTypes.Edit extends Backbone.View
         alert("Error")
     
     #window.location.hash = "/#/contexts/#{@context_id}/users/#{@firstname_id}/adjustment_types/edit"
+    
+  suggest_adjustment: (event) ->
+    @contexts_searchs.fetch
+      success: (collection, response) ->
+        @viewSuggestAdjustment = new App.Views.ContextsSearchs.Index({contexts_searchs: collection})
+

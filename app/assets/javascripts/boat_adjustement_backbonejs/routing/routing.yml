@@ -9,6 +9,7 @@ routing:
     manufacturers: "/contexts/:context_id/users/:user_id/boat_types/:boat_type_id/manufacturers"
     crews: "/contexts/users/:firstname_id/crews"
     daytimes: "/contexts/:context_id/daytimes"
+    contexts_searchs: "/contexts/:context_id/users/:firstname_id/contexts_searchs"
 routing_backbonejs:
   API:
     contexts:

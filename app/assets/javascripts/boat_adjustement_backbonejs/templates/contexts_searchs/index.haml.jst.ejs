@@ -1,11 +1,22 @@
-%ul.span12
-  :each context_search in contexts_searchs
-    %li{class: "contexts_searchs_"+context_search.id+" span12"}
-      .span3
-        = context_search.city
-      .span3
-        = context_search.average_wind
-      .span3
-        = context_search.wind_direction
-      .span3
-        = context_search.sea_state
+%div.class_context_search.span12
+  %ul.span12
+    :each context_search in contexts_searchs
+      %li{id: "contexts_searchs_"+context_search.id, class: "span12"}
+        %div.context_search.span12
+          .span2
+            = context_search.city
+          .span2
+            = context_search.average_wind
+          .span2
+            = context_search.wind_direction
+          .span2
+            = context_search.sea_state
+        .contexts_searchs_adjustments_types.span12
+          :each adjustment_type in context_search.adjustment_types
+            %h1
+              = adjustment_type.name
+            :each adjustment in adjustment_type.adjustments
+              .span2
+                = adjustment.name
+              .span2
+                = adjustment.value 

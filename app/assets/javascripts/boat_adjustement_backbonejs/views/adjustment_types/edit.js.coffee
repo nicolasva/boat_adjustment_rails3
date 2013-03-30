@@ -27,6 +27,7 @@ class App.Views.AdjustmentTypes.Edit extends Backbone.View
     @boat_type = options.boat_type
     @context_id = options.context_id
     @firstname_id = options.firstname_id
+    @adjustment_types_searchs = options.adjustment_types_searchs
     @render()
 
   render: ->
@@ -120,7 +121,8 @@ class App.Views.AdjustmentTypes.Edit extends Backbone.View
     #window.location.hash = "/#/contexts/#{@context_id}/users/#{@firstname_id}/adjustment_types/edit"
     
   suggest_adjustment: (event) ->
+    self = @
     @contexts_searchs.fetch
       success: (collection, response) ->
-        @viewSuggestAdjustment = new App.Views.ContextsSearchs.Index({contexts_searchs: collection})
+        @viewSuggestAdjustment = new App.Views.ContextsSearchs.Index({contexts_searchs: collection, context_id: self.context_id, firstname_id: self.firstname_id, adjustment_types_searchs: self.adjustment_types_searchs})
 

@@ -8,4 +8,5 @@ class ContextsSearchsController < ApplicationController
       format.json {render json: @context.to_json(:include => {:adjustment_types => {:include => :adjustments}})}
     end
   end
+
 end

@@ -11,6 +11,8 @@
             = context_search.wind_direction
           .span2
             = context_search.sea_state
+          .span2.context_search_valid_adjustment_type
+            = "Valid this adjustment type"
         .contexts_searchs_adjustments_types.span12
           :each adjustment_type in context_search.adjustment_types
             %h1

@@ -17,7 +17,9 @@ BoatAdjustmentRails3::Application.routes.draw do
     resources :daytimes
     resources :users, :as => "firstname" do
       resources :crews, :except => [:index, :create, :edit, :new, :show, :update, :destroy]
-      resources :contexts_searchs
+      resources :contexts_searchs do
+        resources :adjustment_types_searchs
+      end
       resources :adjustment_types do
         resources :adjustments
       end

@@ -10,6 +10,7 @@ routing:
     crews: "/contexts/users/:firstname_id/crews"
     daytimes: "/contexts/:context_id/daytimes"
     contexts_searchs: "/contexts/:context_id/users/:firstname_id/contexts_searchs"
+    adjustment_types_searchs: "/contexts/:context_id/users/:firstname_id/contexts_searchs/:contexts_search_id/adjustment_types_searchs"
 routing_backbonejs:
   API:
     contexts:

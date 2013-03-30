@@ -7,7 +7,6 @@ class App.Views.ContextsSearchs.Index extends Backbone.View
     "click .context_search" : "context_search"
     "click .context_search_valid_adjustment_type" : "valid_adjustment_type_suggest"
   initialize: (options) ->
-    @adjustment_types_searchs = options.adjustment_types_searchs
     @context_id = options.context_id
     @firstname_id = options.firstname_id
     @contexts_searchs = options.contexts_searchs
@@ -37,7 +36,5 @@ class App.Views.ContextsSearchs.Index extends Backbone.View
 
   valid_adjustment_type_suggest: (event) ->
     contexts_search_id = $(event.target).parent().parent().attr("id").split("_")[$(event.target).parent().parent().attr("id").split("_").length - 1]
-    @adjustment_types_searchs.contexts_search_id = contexts_search_id
-    @adjustment_types_searchs.fetch
-      success: (collection, response) ->
-        console.log collection.toJSON()
+    @context_search = new App.Context(id: contexts_search_id)
+    

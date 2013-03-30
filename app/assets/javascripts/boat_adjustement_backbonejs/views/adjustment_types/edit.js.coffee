@@ -124,5 +124,5 @@ class App.Views.AdjustmentTypes.Edit extends Backbone.View
     self = @
     @contexts_searchs.fetch
       success: (collection, response) ->
-        @viewSuggestAdjustment = new App.Views.ContextsSearchs.Index({contexts_searchs: collection, context_id: self.context_id, firstname_id: self.firstname_id, adjustment_types_searchs: self.adjustment_types_searchs})
+        @viewSuggestAdjustment = new App.Views.ContextsSearchs.Index({contexts_searchs: collection, context_id: self.context_id, firstname_id: self.firstname_id})
 

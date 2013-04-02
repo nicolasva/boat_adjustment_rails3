@@ -28,5 +28,5 @@ class App.Routers.AdjustmentTypes extends Backbone.Router
       success: (collection, response) ->
         self.boat_types.fetch
           success: (collection_boat_types, boat_types_response) ->
-            @viewAdjustmentTypesEdit = new App.Views.AdjustmentTypes.Edit({,adjustmentType: self.adjustmentType, adjustmentTypes: collection, boat_types: collection_boat_types, boat_type: self.boat_type, context_id: context_id, firstname_id: firstname_id, contexts_searchs: self.contexts_searchs})
+            @viewAdjustmentTypesEdit = new App.Views.AdjustmentTypes.Edit({adjustmentType: self.adjustmentType, adjustmentTypes: collection, boat_types: collection_boat_types, boat_type: self.boat_type, context_id: context_id, firstname_id: firstname_id, contexts_searchs: self.contexts_searchs, adjustment_types_searchs: self.adjustment_types_searchs})
 

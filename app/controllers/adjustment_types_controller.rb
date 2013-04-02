@@ -15,7 +15,9 @@ class AdjustmentTypesController < ApplicationController
   def show
     @adjustment_type = AdjustmentType.find(params[:id])
 
-    respond_with(@adjustment_type)
+    respond_with do |format|
+      format.json {render json: @adjustment_type.to_json(:include => :contexts)}
+    end
   end
 
   # GET /adjustment_types/new
@@ -52,12 +54,10 @@ class AdjustmentTypesController < ApplicationController
   def update
     @adjustment_type = AdjustmentType.find(params[:id])
 
-    respond_to do |format|
+    respond_with do |format|
       if @adjustment_type.update_attributes(params[:adjustment_type])
-        format.html { redirect_to @adjustment_type, notice: 'Adjustment type was successfully updated.' }
-        format.json { head :no_content }
+        format.json {render json: @adjustment_type }
       else
-        format.html { render action: "edit" }
         format.json { render json: @adjustment_type.errors, status: :unprocessable_entity }
       end
     end

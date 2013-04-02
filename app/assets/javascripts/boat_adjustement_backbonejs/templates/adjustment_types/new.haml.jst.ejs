@@ -1,0 +1,15 @@
+%form#new_suggest_adjustment_type
+  :each adjustmentType in context.adjustment_types
+    %li
+      = adjustmentType.name
+    %ol{id: "adjustment_type_"+adjustmentType.id+"_"+App.set_indice_by_default()}
+      :each adjustment in adjustmentType.adjustments
+        %li
+          %input{type: "hidden", name: "adjustment_type[adjustments_attributes]["+App.get_indice(1)+"][adjustment_type_id]", value: adjustment.adjustment_type_id}
+          %table{border: 1}
+            %tr
+              %td
+                %input{type: "text", name: "adjustment_type[adjustments_attributes]["+App.get_indice(0)+"][name]", value: adjustment.name}
+              %td
+                %input{type: "text", name: "adjustment_type[adjustments_attributes]["+App.get_indice(0)+"][value]", value: adjustment.value}
+  %input{type: "submit", value: "Submit"}

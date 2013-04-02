@@ -3,6 +3,8 @@ class App.Views.ContextsSearchs.Index extends Backbone.View
   el_modal_body: ".modal-body"
   template: JST["boat_adjustement_backbonejs/templates/contexts_searchs/index"]
 
+  template_suggest_form_contexts_searchs: JST["boat_adjustement_backbonejs/templates/adjustment_types/new"]
+
   events:
     "click .context_search" : "context_search"
     "click .context_search_valid_adjustment_type" : "valid_adjustment_type_suggest"
@@ -46,6 +48,7 @@ class App.Views.ContextsSearchs.Index extends Backbone.View
           success: (model_context_origin, response_context_origin) ->
             context_origin_result = model_context_origin.toJSON()
             result_context_search_suggest = self.suggest_adjustment(context_search, context_origin_result)
+            $(self.el).html(Haml.render(self.template_suggest_form_contexts_searchs(), {locals: {context: result_context_search_suggest}}))
 
   suggest_adjustment: (context_search, context_origin) ->
     array_result_adjustment_types = new Array() 

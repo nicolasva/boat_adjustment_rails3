@@ -3,7 +3,7 @@ class AdjustmentsController < ApplicationController
   # GET /adjustments
   # GET /adjustments.json
   def index
-    @adjustments = Adjustment.all
+    @adjustments = Adjustment.joins(:adjustment_type => :contexts).where(:contexts => {:id => params[:context_id]}).all
     
     respond_with(@adjustments)
   end

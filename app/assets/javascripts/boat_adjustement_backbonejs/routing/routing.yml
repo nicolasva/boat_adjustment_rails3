@@ -1,5 +1,6 @@
 routing:
   API:
+    cities: "/cities"
     contexts: "/contexts"
     users:  "/contexts/:context_id/users"
     boat_types: "/boat_types"

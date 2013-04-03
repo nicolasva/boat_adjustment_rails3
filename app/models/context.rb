@@ -16,6 +16,7 @@ class Context < ActiveRecord::Base
   validates_presence_of :sea_state
   has_and_belongs_to_many :adjustment_types
   has_and_belongs_to_many :crews
+  belongs_to :city
 
   def save_context_with_daytimes
     if self.save

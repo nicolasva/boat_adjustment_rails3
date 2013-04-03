@@ -13,6 +13,7 @@ BoatAdjustmentRails3::Application.routes.draw do
     resources :sellers
   end
 
+  resources :cities
   resources :contexts do
     resources :daytimes
     resources :users, :as => "firstname" do

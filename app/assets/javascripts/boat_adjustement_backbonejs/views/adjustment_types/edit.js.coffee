@@ -82,7 +82,7 @@ class App.Views.AdjustmentTypes.Edit extends Backbone.View
           console.log adjustment_response.toJSON()
       )
     )
-    window.location.hash = "#/contexts/#{self.context_id}/users/#{self.firstname_id}/adjustment_types" if result_adjustment_save 
+    window.location.hash = "#/cities/#{self.city_id}/contexts/#{self.context_id}/users/#{self.firstname_id}/adjustment_types" if result_adjustment_save 
     return false
 
   create: (event) ->

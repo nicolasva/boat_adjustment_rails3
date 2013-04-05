@@ -20,7 +20,6 @@ class App.Common.CommonViews.Headers.LinkPanel extends Backbone.View
     if _.isUndefined(@boat_types)
       $(@el).children().first().append(Haml.render(@template(), {locals: {firstname_id: @firstname_id, city_id: @city_id, context_id: @context_id}}))
     else
-      console.log true
       $(@el).children().first().append(Haml.render(@template()))
 
   add_new_adjustment_type: (event) ->

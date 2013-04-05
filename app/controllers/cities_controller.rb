@@ -2,7 +2,7 @@ class CitiesController < ApplicationController
   respond_to :html, :json
   
   def index
-    @cities = City.all
+    @cities = City.joins(:contexts => :crews).where(:crews => {:user_id => current_user.id}).group(:id).all
 
     respond_with(@cities)
   end

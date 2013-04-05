@@ -5,7 +5,9 @@ class ContextsController < ApplicationController
   def index
     @contexts = Context.joins(:crews).where(:crews => {:user_id => current_user.id})
 
-    respond_with(@contexts)
+    respond_with(@contexts) do |format|
+      format.json {render json: @contexts.to_json(:include => :daytimes)}
+    end
   end
 
   # GET /contexts/1

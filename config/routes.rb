@@ -6,6 +6,7 @@ BoatAdjustmentRails3::Application.routes.draw do
     match "/contexts/users/:firstname_id/crews/:id" => "crews#show", :via => "GET"
     match "/contexts/users/:firstname_id/crews/:id" => "crews#update", :via => "PUT"
     match "/contexts/users/:firstname_id/crews/:id" => "crews#destroy", :via => "DELETE"
+    match "/contexts" => "contexts#create", :via => "POST"
   end
 
   resources :boat_types do
@@ -13,19 +14,20 @@ BoatAdjustmentRails3::Application.routes.draw do
     resources :sellers
   end
 
-  resources :cities
-  resources :contexts do
-    resources :daytimes
-    resources :users, :as => "firstname" do
-      resources :crews, :except => [:index, :create, :edit, :new, :show, :update, :destroy]
-      resources :contexts_searchs
-      resources :adjustment_types do
-        resources :adjustments
+  resources :cities do
+    resources :contexts do
+      resources :daytimes
+      resources :users, :as => "firstname" do
+        resources :crews, :except => [:index, :create, :edit, :new, :show, :update, :destroy]
+        resources :contexts_searchs
+        resources :adjustment_types do
+          resources :adjustments
+        end
       end
     end
   end
 
-  root :to => "contexts#index"
+  root :to => "cities#index"
 
 
   # The priority is based upon order of creation:

@@ -3,15 +3,18 @@
 %table
   %tr
     %th
+      = "City name"
     %th
+      = "See contexts"
     %th
+      = "Edit City"
+    %th
+      = "Destroy City"
 
   - @cities.each do |city|
     %tr
-      %td= link_to 'Show', city
+      %td= city.name
+      %td= link_to "See contexts", "/#/city/#{city.id}/users/#{current_user.firstname}/contexts"
       %td= link_to 'Edit', edit_city_path(city)
       %td= link_to 'Destroy', city, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
-%br
-
-= link_to 'New City', new_city_path

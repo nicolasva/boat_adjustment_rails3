@@ -20,6 +20,7 @@ class App.Views.AdjustmentTypes.Edit extends Backbone.View
     "click .suggest_adjustment" : "suggest_adjustment"
 
   initialize: (options) ->
+    @city_id = options.city_id
     @contexts_searchs = options.contexts_searchs
     @adjustmentType = options.adjustmentType
     @adjustmentTypes = options.adjustmentTypes
@@ -50,6 +51,7 @@ class App.Views.AdjustmentTypes.Edit extends Backbone.View
     adjustmentType = new App.AdjustmentType(id: adjustment_type_id)
     adjustmentType.context_id = @context_id
     adjustmentType.firstname_id = @firstname_id
+    adjustmentType.city_id = @city_id
     adjustmentType.destroy(
       success: (adjustmentType_response, response_adjustmentType) ->
         $(event.target).parent().parent().parent().remove()
@@ -67,6 +69,7 @@ class App.Views.AdjustmentTypes.Edit extends Backbone.View
       @adjustment.context_id = self.context_id 
       @adjustment.firstname_id = self.firstname_id
       @adjustment.adjustment_type_id = val.adjustment_type_id
+      @adjustment.city_id = self.city_id
       hash_data_adjustment = 
         adjustment:
           name: val.name
@@ -93,6 +96,7 @@ class App.Views.AdjustmentTypes.Edit extends Backbone.View
     @adjustment.context_id = self.context_id
     @adjustment.firstname_id = self.firstname_id
     @adjustment.adjustment_type_id = parseInt($(event.target).parent().parent().parent().children().last().attr("id").split("_")[$(event.target).parent().parent().parent().children().last().attr("id").split("_").length-2])
+    @adjustment.city_id = self.city_id
     @adjustment.save(hash_data_adjustment,
       success: (adjustment_response, response_adjustment) ->
         el = $(event.target).parent().parent().parent().children().last()
@@ -111,6 +115,7 @@ class App.Views.AdjustmentTypes.Edit extends Backbone.View
     @adjustment.context_id = self.context_id
     @adjustment.firstname_id = self.firstname_id
     @adjustment.adjustment_type_id = parseInt($(event.target).parent().parent().parent().parent().parent().children().first().attr("value"))
+    @adjustment.city_id = city_id
     @adjustment.destroy
       success: (adjustment_response, response_adjustment) ->
         $(event.target).parent().parent().parent().parent().parent().children().first().parent().remove()

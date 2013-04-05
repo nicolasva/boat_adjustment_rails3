@@ -1,25 +1,26 @@
 routing:
   API:
     cities: "/cities"
-    contexts: "/contexts"
+    contexts: "/cities/:city_id/contexts"
+    contexts_bis: "/contexts"
     users:  "/contexts/:context_id/users"
     boat_types: "/boat_types"
-    adjustment_types: "/contexts/:context_id/users/:firstname_id/adjustment_types"
-    adjustments: "/contexts/:context_id/users/:firstname_id/adjustment_types/:adjustment_type_id/adjustments"
+    adjustment_types: "/cities/:city_id/contexts/:context_id/users/:firstname_id/adjustment_types"
+    adjustments: "/cities/:city_id/contexts/:context_id/users/:firstname_id/adjustment_types/:adjustment_type_id/adjustments"
     sellers: "/contexts/:context_id/users/:user_id/boat_types/:boat_type_id/sellers"
     manufacturers: "/contexts/:context_id/users/:user_id/boat_types/:boat_type_id/manufacturers"
     crews: "/contexts/users/:firstname_id/crews"
-    daytimes: "/contexts/:context_id/daytimes"
-    contexts_searchs: "/contexts/:context_id/users/:firstname_id/contexts_searchs"
-    adjustment_types_searchs: "/contexts/:context_id/users/:firstname_id/contexts_searchs/:contexts_search_id/adjustment_types_searchs"
+    daytimes: "/cities/:city_id/contexts/:context_id/daytimes"
+    contexts_searchs: "/cities/:city_id/contexts/:context_id/users/:firstname_id/contexts_searchs"
 routing_backbonejs:
   API:
     contexts:
       routes:
-        "/users/:firstname_id/contexts/new" : "new"
-        "/users/:firstname_id/contexts/:id/edit" : "edit"
-        "/contexts/:id" : "destroy"
+        "/city/:city_id/users/:firstname_id/contexts" : "index"
+        "/city/:city_id/users/:firstname_id/contexts/new" : "new"
+        "/city/:city_id/users/:firstname_id/contexts/:id/edit" : "edit"
+        "/city/:city_id/contexts/:id" : "destroy"
     adjustment_types:
       routes: 
-        "/contexts/:context_id/users/:firstname_id/adjustment_types" : "index"
-        "/contexts/:context_id/users/:firstname_id/adjustment_types/edit" : "edit"
+        "/city/:city_id/contexts/:context_id/users/:firstname_id/adjustment_types" : "index"
+        "/city/:city_id/contexts/:context_id/users/:firstname_id/adjustment_types/edit" : "edit"

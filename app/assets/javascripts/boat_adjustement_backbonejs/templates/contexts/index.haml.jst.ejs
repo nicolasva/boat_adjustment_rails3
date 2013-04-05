@@ -1,0 +1,29 @@
+%h1
+  = "Listing contexts"
+
+%table.table
+  %tr
+    %th
+      = "Day"
+    %th
+      = "Associate adjustment"
+    %th
+      = "Edit"
+    %th
+      = "Delete"
+  :each context in contexts
+    %tr
+      %td
+        :if !_.isUndefined(_.first(context.daytimes))
+          = _.first(context.daytimes).day
+        :if _.isUndefined(_.first(context.daytimes))
+          = "No day Specified"
+      %td
+        %a{href: "/#/cities/"+context.city_id+"/contexts/"+context.id+"/users/#{current_user.firstname}/adjustment_types"}
+          = "Associate adjustment"
+      %td
+        %a{href: "/#/cities/"+context.city_id+"/users/"+firstname_id+"/contexts/"+context.id+"/edit"}
+          = "Edit"
+      %td
+        %a{href: "/#/cities/"+context.city_id+"/contexts/"+context.id, data: {confirm: "Are you sure ?"}} 
+          = "Destroy"

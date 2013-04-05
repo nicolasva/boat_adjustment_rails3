@@ -14,7 +14,7 @@
   - @contexts.each do |context|
     %tr
       %td
-        = context.city
+        = context.city.name
       %td
         = link_to "Associate ajustment", "/#/contexts/#{context.id}/users/#{current_user.firstname}/adjustment_types" 
       %td

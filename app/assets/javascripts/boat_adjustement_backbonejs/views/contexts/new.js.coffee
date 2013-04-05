@@ -10,8 +10,11 @@ class App.Views.Contexts.New extends Backbone.View
   events: 
     "submit #new_context" : "create"
     "click .add_weight" : "add_weight"
+    "click .class_add_city" : "add_city"
 
   initialize: (options) ->
+    @city = options.city
+    @cities = options.cities
     @context = options.context
     @crews = options.crews
     @crew = options.crew
@@ -19,8 +22,11 @@ class App.Views.Contexts.New extends Backbone.View
 
   render: ->
     $(@el).html(Haml.render(@template()))
-    $(@el).children().first().children().first().children().first().append(Haml.render(@template_content_form(), {locals: {crews: @crews.toJSON(), page: "new"}}))
+    $(@el).children().first().children().first().children().first().append(Haml.render(@template_content_form(), {locals: {crews: @crews.toJSON(), cities: @cities.toJSON(), page: "new"}}))
     $(@el_daytimes_day).datepicker()
+
+  add_city: (event) ->
+    @view_add_new_city = new App.Views.Cities.New({city: @city})
 
   create: (event) ->
     data = $(@el_form_new_context).toJSON()

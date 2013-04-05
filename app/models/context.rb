@@ -1,7 +1,6 @@
 class Context < ActiveRecord::Base 
   attr_accessor :daytimes_attributes
   attr_accessible :daytimes_attributes
-  attr_accessible :city
   attr_accessible :average_wind
   attr_accessible :wind_variation
   attr_accessible :wind_direction
@@ -9,14 +8,14 @@ class Context < ActiveRecord::Base
   attr_accessible :crew_ids
   attr_accessible :daytime_ids
   attr_accessible :adjustment_type_ids
-  has_many :daytimes
-  validates_presence_of :city
+  attr_accessible :city_id
+  has_many :daytimes 
+  belongs_to :city
   validates_presence_of :average_wind
   validates_presence_of :wind_variation
   validates_presence_of :sea_state
   has_and_belongs_to_many :adjustment_types
   has_and_belongs_to_many :crews
-  belongs_to :city
 
   def save_context_with_daytimes
     if self.save

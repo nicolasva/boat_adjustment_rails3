@@ -9,16 +9,22 @@ class App.Views.Contexts.Edit extends Backbone.View
 
   events: 
     "submit #edit_context" : "create"
+    "click .class_add_city" : "add_city"
 
   initialize: (options) ->
     @context = options.context
     @crews = options.crews
+    @cities = options.cities
+    @city = options.city
     @render()
 
   render: ->
     $(@el).html(Haml.render(@template()))
-    $(@el).children().first().children().first().children().first().append(Haml.render(@template_content_form(), {locals: {context: @context.toJSON(), crews: @crews.toJSON(), page: "edit"}}))
+    $(@el).children().first().children().first().children().first().append(Haml.render(@template_content_form(), {locals: {context: @context.toJSON(), cities: @cities.toJSON(), crews: @crews.toJSON(), page: "edit"}}))
     $(@el_daytimes_day).datepicker()
+
+  add_city: (event) ->
+    @view_add_new_city = new App.Views.Cities.New({city: @city})
 
   create: (event) ->
     data = $(@el_form_edit_context).toJSON() 

@@ -5,6 +5,8 @@ class App.Routers.Contexts extends Backbone.Router
   initialize: ->
     $(".header").children().first().children().last().remove() if _.isEqual($(".header").children().first().children().length, 2) 
     @context = new App.Context()
+    @cities = new App.Collections.Cities()
+    @city = new App.City()
     @crews = new App.Collections.Crews()
     @crew = new App.Crew()
 
@@ -12,9 +14,11 @@ class App.Routers.Contexts extends Backbone.Router
     self = @
     @crew.firstname_id = firstname_id
     @crews.firstname_id = firstname_id
-    @crews.fetch
-      success: (collection, response) ->
-        @ViewContextNew = new App.Views.Contexts.New({context: self.context, crews: collection, crew: self.crew})
+    @cities.fetch
+      success: (collection_cities, cities_response) ->
+        self.crews.fetch
+          success: (collection, response) ->
+            @ViewContextNew = new App.Views.Contexts.New({context: self.context, crews: collection, crew: self.crew, city: self.city, cities: collection_cities})
 
   edit: (firstname_id, id) ->
     self = @
@@ -24,7 +28,9 @@ class App.Routers.Contexts extends Backbone.Router
       success: (model, response) ->
         self.crews.fetch
           success: (collection, response_crew) ->
-            @ViewContextEdit = new App.Views.Contexts.Edit({context: model, crews: collection})
+            self.cities.fetch
+              success: (cities, response_cities) ->
+                @ViewContextEdit = new App.Views.Contexts.Edit({context: model, crews: collection, city: self.city, cities: cities})
 
   destroy: (id) ->
     @context = new App.Context(id: id)

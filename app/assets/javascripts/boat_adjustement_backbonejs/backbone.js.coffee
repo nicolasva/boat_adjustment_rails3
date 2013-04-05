@@ -27,6 +27,7 @@
     Daytimes: {}
     Manufacturers: {}
     Sellers: {}
+    Cities: {}
     ContextsSearchs: {}
   Routers: {}
   Libs: {}

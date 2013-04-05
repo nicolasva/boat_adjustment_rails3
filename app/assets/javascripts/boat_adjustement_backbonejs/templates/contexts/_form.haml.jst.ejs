@@ -1,10 +1,20 @@
 %p.span12
   %label{for: "context_city"} = "City"
   %br
-  :if _.isEqual(page, "new")
-    %input.necessary{type: "text", id: "context_city", name: "context[city]", placeholder: "City"}
-  :if _.isEqual(page, "edit") 
-    %input.necessary{type: "text", id: "context_city", name: "context[city]", value: context.city}
+  %select{name: "context[city_id]", id: "context_city_id"}
+    :each city in cities
+      :if _.isEqual(page, "new")
+        %option{value: city.id}
+          = city.name
+      :if _.isEqual(page, "edit")
+        :if _.isEqual(context.city_id, city.id)
+          %option{value: city.id, selected: "selected"}
+            = city.name
+        :if !_.isEqual(context.city_id, city.id)
+          %option{value: city.id}
+            = city.name
+  %span{class: "class_add_city"}
+    = "Add new city"
 %p.span12
   %label{for: "context_average_wind"} = "Average wind"
   %br

@@ -1,5 +1,5 @@
 class AddColumnCityIdToContexts < ActiveRecord::Migration
-  def chnage
+  def change
     add_column :contexts, :city_id, :integer
     add_index "contexts", ["city_id"], :name => "city_city_id_to_context"
   end

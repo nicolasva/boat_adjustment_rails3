@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130403151518) do
+ActiveRecord::Schema.define(:version => 20130404091007) do
 
   create_table "adjustment_types", :force => true do |t|
     t.string   "name",         :null => false
@@ -66,14 +66,16 @@ ActiveRecord::Schema.define(:version => 20130403151518) do
   end
 
   create_table "contexts", :force => true do |t|
-    t.string   "city",           :null => false
     t.float    "average_wind",   :null => false
     t.float    "wind_variation", :null => false
     t.float    "wind_direction", :null => false
     t.string   "sea_state",      :null => false
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
+    t.integer  "city_id"
   end
+
+  add_index "contexts", ["city_id"], :name => "city_city_id_to_context"
 
   create_table "contexts_crews", :force => true do |t|
     t.integer "crew_id"

@@ -3,9 +3,9 @@ class ContextsController < ApplicationController
   # GET /contexts
   # GET /contexts.json
   def index
-    @contexts = Context.all
+    @contexts = Context.joins(:crews).where(:crews => {:user_id => current_user.id})
 
-    respond_with(@contexts)  
+    respond_with(@contexts)
   end
 
   # GET /contexts/1

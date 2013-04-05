@@ -15,7 +15,7 @@ class App.Routers.AdjustmentTypes extends Backbone.Router
     @adjustmentTypes.city_id = city_id
     @adjustmentTypes.fetch
       success: (collection, response) ->
-        @viewAdjustmentTypesIndex = new App.Views.AdjustmentTypes.Index(adjustmentTypes: collection, context_id: context_id, firstname_id: firstname_id)
+        @viewAdjustmentTypesIndex = new App.Views.AdjustmentTypes.Index(adjustmentTypes: collection, context_id: context_id, firstname_id: firstname_id, city_id: city_id)
 
   edit: (city_id, context_id, firstname_id) ->
     self = @ 

@@ -19,7 +19,7 @@
         :if _.isUndefined(_.first(context.daytimes))
           = "No day Specified"
       %td
-        %a{href: "/#/cities/"+context.city_id+"/contexts/"+context.id+"/users/#{current_user.firstname}/adjustment_types"}
+        %a{href: "/#/cities/"+context.city_id+"/contexts/"+context.id+"/users/"+firstname_id+"/adjustment_types"}
           = "Associate adjustment"
       %td
         %a{href: "/#/cities/"+context.city_id+"/users/"+firstname_id+"/contexts/"+context.id+"/edit"}

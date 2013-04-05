@@ -2,6 +2,7 @@ class App.Common.CommonViews.Headers.LinkPanel extends Backbone.View
   el: ".header"
 
   initialize: (options) -> 
+    @city_id = options.city_id
     @boat_types = options.boat_types unless _.isUndefined(options.boat_types)
     @el_form_edit_adjustment_types = options.el_form_edit_adjustment_types unless _.isUndefined(options.el_form_edit_adjustment_types)
     @boat_type = options.boat_type unless _.isUndefined(options.boat_type)
@@ -17,7 +18,7 @@ class App.Common.CommonViews.Headers.LinkPanel extends Backbone.View
   render: ->
     $(@el).children().first().children().last().remove() if _.isEqual($(@el).children().first().children().length, 2) 
     if _.isUndefined(@boat_types)
-      $(@el).children().first().append(Haml.render(@template(), {locals: {firstname_id: @firstname_id, context_id: @context_id}}))
+      $(@el).children().first().append(Haml.render(@template(), {locals: {firstname_id: @firstname_id, city_id: @city_id, context_id: @context_id}}))
     else
       console.log true
       $(@el).children().first().append(Haml.render(@template()))

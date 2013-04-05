@@ -8,5 +8,4 @@ class App.Views.Contexts.Index extends Backbone.View
     @render()
 
   render: ->
-    console.log @contexts.toJSON()[0]
     $(@el).html(Haml.render(@template(), {locals: {contexts: @contexts.toJSON(), firstname_id: @firstname_id}}))

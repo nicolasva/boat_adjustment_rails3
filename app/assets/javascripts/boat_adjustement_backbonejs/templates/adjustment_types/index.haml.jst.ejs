@@ -2,7 +2,7 @@
   :each adjustmentType in adjustmentTypes
     %li
       = adjustmentType.name
-      %table{border : 1}
+      %table.table{border : 1}
         %tr
           %td
             = "name"
@@ -11,7 +11,7 @@
       %ol{id: "adjustment_type_"+adjustmentType.id+"_"+App.set_indice_by_default()}
         :each adjustment in adjustmentType.adjustments
           %li{id: "adjustments_"+App.get_indice(1)}
-            %table{border: 1}
+            %table.table{border: 1}
               %tr
                 %td
                   = adjustment.name

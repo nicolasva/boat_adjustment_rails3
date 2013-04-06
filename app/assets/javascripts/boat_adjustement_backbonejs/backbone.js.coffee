@@ -34,6 +34,7 @@
   init: ->
     new App.Routers.Contexts()
     new App.Routers.AdjustmentTypes()
+    new App.Routers.Cities()
     Backbone.history.start()
     return
 

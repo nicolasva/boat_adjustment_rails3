@@ -24,3 +24,7 @@ routing_backbonejs:
       routes: 
         "/cities/:city_id/contexts/:context_id/users/:firstname_id/adjustment_types" : "index"
         "/cities/:city_id/contexts/:context_id/users/:firstname_id/adjustment_types/edit" : "edit"
+    cities:
+      routes:
+        "/cities/:id/edit" : "edit"
+        "/cities/:id" : "destroy"

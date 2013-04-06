@@ -15,6 +15,6 @@
     %tr
       %td= city.name
       %td= link_to "See contexts", "/#/city/#{city.id}/users/#{current_user.firstname}/contexts"
-      %td= link_to 'Edit', edit_city_path(city)
-      %td= link_to 'Destroy', city, :method => :delete, :data => { :confirm => 'Are you sure?' }
+      %td= link_to 'Edit', "/#/cities/#{city.id}/edit"
+      %td= link_to 'Destroy', "/#/cities/#{city.id}", :method => :delete, :data => { :confirm => 'Are you sure?' }
 

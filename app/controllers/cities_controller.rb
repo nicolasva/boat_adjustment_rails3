@@ -12,7 +12,7 @@ class CitiesController < ApplicationController
   def show
     @city = City.find(params[:id])
 
-    respond_with(@cities)
+    respond_with(@city)
   end
 
   # GET /cities/new

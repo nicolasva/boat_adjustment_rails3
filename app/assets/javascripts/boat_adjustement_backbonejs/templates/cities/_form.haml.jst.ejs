@@ -1,0 +1,7 @@
+%p.span2
+  %label{for: "city_name"} = "City name"
+  %br
+  :if _.isEqual(page, "new")
+    %input{type: "text", name: "city[name]", id: "city_name", placeholder: "City name"}
+  :if !_.isEqual(page, "new")
+    %input{type: "text", name: "city[name]", id: "city_name", value: city.name}

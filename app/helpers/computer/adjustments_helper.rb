@@ -1,0 +1,2 @@
+module Computer::AdjustmentsHelper
+end

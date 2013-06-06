@@ -1,30 +1,34 @@
 routing:
   API:
-    cities: "/cities"
-    contexts: "/cities/:city_id/contexts"
-    contexts_bis: "/contexts"
-    users:  "/contexts/:context_id/users"
-    boat_types: "/boat_types"
-    adjustment_types: "/cities/:city_id/contexts/:context_id/users/:firstname_id/adjustment_types"
-    adjustments: "/cities/:city_id/contexts/:context_id/users/:firstname_id/adjustment_types/:adjustment_type_id/adjustments"
-    sellers: "/contexts/:context_id/users/:user_id/boat_types/:boat_type_id/sellers"
-    manufacturers: "/contexts/:context_id/users/:user_id/boat_types/:boat_type_id/manufacturers"
-    crews: "/contexts/users/:firstname_id/crews"
-    daytimes: "/cities/:city_id/contexts/:context_id/daytimes"
-    contexts_searchs: "/cities/:city_id/contexts/:context_id/users/:firstname_id/contexts_searchs"
+    mobile:
+      cities: "/mobile/cities"
+      contexts: "/mobile/cities/:city_id/contexts"
+      contexts_bis: "/mobile/contexts"
+      users:  "/mobile/contexts/:context_id/users"
+      adjustment_types: "/mobile/cities/:city_id/contexts/:context_id/users/:firstname_id/adjustment_types"
+      translates: "/mobile/translates"
+      adjustments: "/mobile/cities/:city_id/contexts/:context_id/users/:firstname_id/adjustment_types/:adjustment_type_id/adjustments"
+      crews: "/mobile/contexts/users/:firstname_id/crews"
+      daytimes: "/mobile/cities/:city_id/contexts/:context_id/daytimes"
+      contexts_searchs: "/mobile/cities/:city_id/contexts/:context_id/users/:firstname_id/contexts_searchs"
+    common:  
+      boat_types: "/common/boat_types"
+      sellers: "/common/contexts/:context_id/users/:user_id/boat_types/:boat_type_id/sellers"
+      manufacturers: "/common/contexts/:context_id/users/:user_id/boat_types/:boat_type_id/manufacturers"
 routing_backbonejs:
   API:
-    contexts:
-      routes:
-        "/city/:city_id/users/:firstname_id/contexts" : "index"
-        "/city/:city_id/users/:firstname_id/contexts/new" : "new"
-        "/city/:city_id/users/:firstname_id/contexts/:id/edit" : "edit"
-        "/city/:city_id/contexts/:id" : "destroy"
-    adjustment_types:
-      routes: 
-        "/cities/:city_id/contexts/:context_id/users/:firstname_id/adjustment_types" : "index"
-        "/cities/:city_id/contexts/:context_id/users/:firstname_id/adjustment_types/edit" : "edit"
-    cities:
-      routes:
-        "/cities/:id/edit" : "edit"
-        "/cities/:id" : "destroy"
+    mobile:
+      contexts:
+        routes:
+          "/mobile/city/:city_id/users/:firstname_id/contexts" : "index"
+          "/mobile/city/:city_id/users/:firstname_id/contexts/new" : "new"
+          "/mobile/city/:city_id/users/:firstname_id/contexts/:id/edit" : "edit"
+          "/mobile/city/:city_id/contexts/:id" : "destroy"
+      adjustment_types:
+        routes: 
+          "/mobile/cities/:city_id/contexts/:context_id/users/:firstname_id/adjustment_types" : "index"
+          "/mobile/cities/:city_id/contexts/:context_id/users/:firstname_id/adjustment_types/edit" : "edit"
+      cities:
+        routes:
+          "/mobile/cities/:id/edit" : "edit"
+          "/mobile/cities/:id" : "destroy"

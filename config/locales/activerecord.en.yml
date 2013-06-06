@@ -1,0 +1,53 @@
+# Sample localization file for English. Add more files in this directory for other locales.
+# See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
+
+en:
+  activerecord:
+    models:
+      context: "Context"
+      city: "City"
+      adjustment: "Adjustment"
+      adjustment_type: "Adjustment Type"
+      boat_type: "Boat Type"
+      crew: "Crew"
+      daytime: "Day time"
+      manufacturer: "Manufacturer"
+      seller: "Seller"
+      user: "User"
+    attributes:
+      context:
+        average_wind: "Average wind"
+        wind_variation: "Wind variation"
+        wind_direction: "Wind direction"
+        sea_state: "Sea state"
+        city_id: "City id"
+      boat_type:
+        model: "Boat Model"
+        length: "Length Boat"
+        width: "Width boat"
+        serial_number_sail: "Immatriculation de la grande voile"
+        serial_number_jib_sail: "Immatriculation du foc"
+        serial_number_spineaker: "Numero du spi"
+      adjustment:
+        name: "Nom du réglage"
+        value: "Valeur du réglage"
+        adjustment_type_id: "Id de l'adjustement"
+      adjustment_type:
+        name: "Nom du type du réglage"
+        boat_type_id: "Id du type du bateau"
+      crew: 
+        crew_weight: "Poid de l'équipage"
+        user_id: "Id de l'utilisateur"
+      city:
+        name: "City name"
+      daytime:
+        day: "Day"
+        context_id: "Context Id"
+      manufacturer:
+        name: "Manufacturer name"
+      seller:
+        name: "Seller name"
+      user:
+        email: "Email"
+        firstname: "Firstname"
+        lastname: "Lastname"

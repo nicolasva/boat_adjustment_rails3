@@ -1,0 +1,27 @@
+routing:
+  API:
+    computer:
+      cities: "/computer/cities"
+      contexts: "/computer/cities/:city_id/contexts"
+      contexts_bis: "/computer/contexts"
+      users:  "/computer/contexts/:context_id/users"
+      adjustment_types: "/computer/cities/:city_id/contexts/:context_id/users/:firstname_id/adjustment_types"
+      translates: "/computer/translates"
+      adjustments: "/computer/cities/:city_id/contexts/:context_id/users/:firstname_id/adjustment_types/:adjustment_type_id/adjustments"
+      crews: "/computer/contexts/users/:firstname_id/crews"
+      daytimes: "/computer/cities/:city_id/contexts/:context_id/daytimes"
+      contexts_searchs: "/computer/cities/:city_id/contexts/:context_id/users/:firstname_id/contexts_searchs"
+    common:  
+      boat_types: "/common/boat_types"
+      sellers: "/common/contexts/:context_id/users/:user_id/boat_types/:boat_type_id/sellers"
+      manufacturers: "/common/contexts/:context_id/users/:user_id/boat_types/:boat_type_id/manufacturers"
+routing_backbonejs:
+  API:
+    computer:
+      contexts:
+        routes:
+          "/computer/users/:firstname/contexts/new" : "new"
+          "/computer/city/:city_id/users/:firstname_id/contexts" : "index"
+      cities:
+        routes:
+          ""

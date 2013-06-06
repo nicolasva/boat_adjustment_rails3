@@ -1,6 +1,6 @@
 class App.Routers.Cities extends Backbone.Router
   routes:
-    App.routing_yaml.routing_backbonejs.API.cities.routes
+    App.routing_yaml.routing_backbonejs.API.mobile.cities.routes
 
   edit: (id) ->
     @city = new App.City(id: id)

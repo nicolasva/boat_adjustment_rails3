@@ -1,0 +1,51 @@
+fr:
+  activerecord:
+    models:
+      context: "Context"
+      city: "City"
+      adjustment: "Adjustment"
+      adjustment_type: "Adjustment Type"
+      boat_type: "Boat type"
+      crew: "Equipage"
+      daytime: "Jour"
+      manufacturer: "Fabriquant"
+      seller: "Vendeur"
+      user: "Utilisateur"
+    attributes:
+      context: 
+        average_wind: "Moyenne du vent"
+        wind_variation: "Variation du vent"
+        wind_direction: "Direction du vent"
+        sea_state: "Etat de la mer"
+        city_id: "Id de la ville"
+      boat_type:
+        model: "Modèle du bateau"
+        length: "Longueur du bateau"
+        width: "Taile du bateau"
+        serial_number_sail: "Serial number sail"
+        serial_number_jib_sail: "Serial number jib sail"
+        serial_number_spineaker: "Serial number spineaker"
+      adjustment:
+        name: "Adjustment name"
+        value: "Adjustment value"
+        adjustment_type_id: "Adjustment Type Id"
+      adjustment_type:
+        name: "Adjustment type name"
+        boat_type_id: "Boat Type Id"
+      crew:
+        crew_weight: "Weight crew"
+        user_id: "User Id"
+      city:
+        name: "Nom de la ville"
+      daytime: 
+        day: "Jour"
+        context_id: "Id du context"
+      manufacturer:
+        name: "Nom du fabriquant"
+      seller:
+        name: "Nom du vendeur"
+      user:
+        email: "Email"
+        firstname: "Prenom"
+        lastname: "Nom"
+

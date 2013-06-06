@@ -1,0 +1,2 @@
+module Computer::BoatTypesHelper
+end

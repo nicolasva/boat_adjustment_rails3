@@ -1,35 +1,66 @@
 BoatAdjustmentRails3::Application.routes.draw do
   devise_for :users, :path => "users", :path_names => { :sign_in => "login", :sign_up => "new_user", :passwords => "users/passwords" }
-  scope do 
-    match "/contexts/users/:firstname_id/crews" => "crews#index", :via => "GET"
-    match "/contexts/users/:firstname_id/crews" => "crews#create", :via => "POST"
-    match "/contexts/users/:firstname_id/crews/:id" => "crews#show", :via => "GET"
-    match "/contexts/users/:firstname_id/crews/:id" => "crews#update", :via => "PUT"
-    match "/contexts/users/:firstname_id/crews/:id" => "crews#destroy", :via => "DELETE"
-    match "/contexts" => "contexts#create", :via => "POST"
-  end
+  
+  resources :translates
 
-  resources :boat_types do
-    resources :manufacturers
-    resources :sellers
-  end
-
-  resources :cities do
-    resources :contexts do
-      resources :daytimes
-      resources :users, :as => "firstname" do
-        resources :crews, :except => [:index, :create, :edit, :new, :show, :update, :destroy]
-        resources :contexts_searchs
-        resources :adjustment_types do
-          resources :adjustments
-        end
-      end
+  namespace :common do
+    resources :boat_types do
+      resources :manufacturers
+      resources :sellers
     end
   end
 
-  root :to => "cities#index"
+  namespace :mobile do
+    scope do 
+      match "/contexts/users/:firstname_id/crews" => "crews#index", :via => "GET"
+      match "/contexts/users/:firstname_id/crews" => "crews#create", :via => "POST"
+      match "/contexts/users/:firstname_id/crews/:id" => "crews#show", :via => "GET"
+      match "/contexts/users/:firstname_id/crews/:id" => "crews#update", :via => "PUT"
+      match "/contexts/users/:firstname_id/crews/:id" => "crews#destroy", :via => "DELETE"
+      match "/contexts" => "contexts#create", :via => "POST"
+    end
 
 
+    resources :cities do
+      resources :contexts do
+        resources :daytimes
+        resources :users, :as => "firstname" do
+          resources :crews, :except => [:index, :create, :edit, :new, :show, :update, :destroy]
+          resources :contexts_searchs
+          resources :adjustment_types do
+            resources :adjustments
+          end
+        end
+      end
+    end
+
+    root :to => "cities#index"
+  end
+
+  namespace :computer do
+    scope do
+      #match "/computer/contexts/new" => "/computer/contexts/new", :via => "POST"
+      match "contexts" => "contexts#create", :via => "POST"
+      match "contexts" => "contexts#index"
+    end
+    resources :cities do
+      resources :contexts do
+        resources :daytimes
+        resources :users, :as => "firstname" do
+          resources :crews, :except => [:index, :create, :edit, :new, :show, :update, :destroy]
+          resources :contexts_searchs
+          resources :adjustment_types do
+            resources :adjustments
+          end
+        end
+      end
+    end
+
+    root :to => "cities#index"
+  end
+
+  #root :to => redirect("/users/login")
+  root :to => "mobile/cities#index"
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

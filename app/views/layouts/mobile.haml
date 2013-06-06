@@ -14,12 +14,21 @@
           %li.span2
             = link_to t("panel.city_lists"), cities_path
           %li.span2
-            = link_to "New Context", "/#/users/#{current_user.firstname}/contexts/new"
+            = link_to "New Context", "/#/mobile/users/#{current_user.firstname}/contexts/new"
         %ul.span6
           %li.span2
             = link_to "Logout", destroy_user_session_path, :method => :delete
     %section.notice
     %section.container.container-fluid
       = yield
+
+    %section.modal.hide.fade
+      %div.modal-header
+        %button{:type => "button", :class => "close", "data-dismiss" => "modal", "aria-hidden" => true}
+          &times;
+      %div.modal-body
+      %div.modal-footer
+        %button{:class => "btn", "data-dismiss" => "modal", "aria-hidden" => true}
+          = "close"
 
     %section.footer

@@ -3,7 +3,7 @@
   %head
     %title Boat adjustment
     = stylesheet_link_tag("application", :media => "all")
-    = javascript_include_tag(be_backbone? ? "rails/application" : "boat_adjustement_backbonejs/application")
+    = javascript_include_tag("boat_adjustment_computer_backbonejs/application")
     = csrf_meta_tags
     - if protect_against_forgery?
       %meta{:content => u(cookies[Rails.application.config.session_options[:key]]), :name => "session-key-value"}
@@ -12,14 +12,13 @@
       %section.header
         %ul.span6
           %li.span2
-            = link_to t("panel.city_lists"), cities_path
+            = link_to t("panel.city_lists"), computer_cities_path
           %li.span2
-            = link_to "New Context", "/#/users/#{current_user.firstname}/contexts/new"
+            = link_to "New Context", "/#/computer/users/#{current_user.firstname}/contexts/new"
         %ul.span6
           %li.span2
             = link_to "Logout", destroy_user_session_path, :method => :delete
     %section.notice
-    %section.container.container-fluid
-      = yield
-
+      %section.container.container-fluid
+        = yield
     %section.footer

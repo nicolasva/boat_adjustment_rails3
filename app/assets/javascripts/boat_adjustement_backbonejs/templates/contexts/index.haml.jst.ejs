@@ -19,11 +19,11 @@
         :if _.isUndefined(_.first(context.daytimes))
           = "No day Specified"
       %td
-        %a{href: "/#/cities/"+context.city_id+"/contexts/"+context.id+"/users/"+firstname_id+"/adjustment_types"}
+        %a{href: "/#/mobile/cities/"+context.city_id+"/contexts/"+context.id+"/users/"+firstname_id+"/adjustment_types"}
           = "Associate adjustment"
       %td
-        %a{href: "/#/cities/"+context.city_id+"/users/"+firstname_id+"/contexts/"+context.id+"/edit"}
+        %a{href: "/#/mobile/cities/"+context.city_id+"/users/"+firstname_id+"/contexts/"+context.id+"/edit"}
           = "Edit"
       %td
-        %a{href: "/#/cities/"+context.city_id+"/contexts/"+context.id, data: {confirm: "Are you sure ?"}} 
+        %a{href: "/#/mobile/cities/"+context.city_id+"/contexts/"+context.id, data: {confirm: "Are you sure ?"}} 
           = "Destroy"

@@ -1,0 +1,20 @@
+%h1
+  = "Contexts Lists"
+
+%table.table
+  %tr
+    %th
+      = "Cities"
+    %th
+      = "Edit"
+    %th
+      = "Drop"
+  - @cities.each do |city|
+    %tr
+      %td
+        = city.name
+      %td
+        = link_to "Edit", "/#/computer/cities/#{city.id}/edit" 
+      %td
+        = link_to "Delete", "/#/computer/cities/#{city.id}", method: :delete, data: {confirm: "Are you sure ?" } 
+

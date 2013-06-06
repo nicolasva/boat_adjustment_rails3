@@ -1,6 +1,6 @@
 class App.Routers.Contexts extends Backbone.Router
   routes:
-    App.routing_yaml.routing_backbonejs.API.contexts.routes
+    App.routing_yaml.routing_backbonejs.API.mobile.contexts.routes
 
   initialize: ->
     $(".header").children().first().children().last().remove() if _.isEqual($(".header").children().first().children().length, 2) 

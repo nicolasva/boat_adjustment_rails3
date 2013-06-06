@@ -1,0 +1,2 @@
+module Computer::ManufacturersHelper
+end

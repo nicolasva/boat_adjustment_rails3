@@ -1,6 +1,6 @@
 class App.Routers.AdjustmentTypes extends Backbone.Router
   routes:
-    App.routing_yaml.routing_backbonejs.API.adjustment_types.routes
+    App.routing_yaml.routing_backbonejs.API.mobile.adjustment_types.routes
 
   initialize: ->
     @adjustmentTypes = new App.Collections.AdjustmentTypes()
